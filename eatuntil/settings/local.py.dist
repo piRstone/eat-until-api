@@ -1,0 +1,29 @@
+SECRET_KEY = ''
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': '<DB_NAME>',
+        'USER': '<DB_USER>',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+    }
+}
+
+LANGUAGE_CODE = 'fr-fr'
+
+# If you want to test the layout of your email with a real email server
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# DEFAULT_FROM_EMAIL = 'tech@eatuntil.com'
+# EMAIL_HOST = 'eatuntil.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'tech'
+# EMAIL_HOST_PASSWORD = ''
+# EMAIL_USE_SSL = True
+
+# For example with MailHog
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# DEFAULT_FROM_EMAIL = 'tech@eatuntil.com'
+# EMAIL_HOST = 'localhost'
+# EMAIL_PORT = 1025

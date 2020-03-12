@@ -3,7 +3,7 @@ import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+ROOT_DIR = os.path.dirname(BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -12,7 +12,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '5z7h0j-q6yf19hgs_mgx*j13ct5u57%+elfu#lq*lsw%7+xpoc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -27,12 +27,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'corsheaders',
+    'rest_framework',
     'drf_yasg',
 
     'accounts.apps.AccountsConfig',
+    'lists.apps.ListsConfig',
 ]
 
 MIDDLEWARE = [
+    # Must be first (at least before any HTTP response)
+    # @see https://github.com/ottoyiu/django-cors-headers/
+    'corsheaders.middleware.CorsMiddleware',
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -119,6 +126,9 @@ STATIC_URL = '/static/'
 # Django Rest Framework
 
 REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': (  # Remove Browsable API renderer by default for security
+        'rest_framework.renderers.JSONRenderer',
+    ),
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
@@ -136,7 +146,8 @@ JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'accounts.views.jwt_response_payload_handler'
 }
 
-PROTECTED_UPLOADS_ROOT = '/Users/pierrelavalley/repos/protected-uploads'
+PROTECTED_UPLOADS_ROOT = os.path.join(ROOT_DIR, 'private')
+PROTECTED_UPLOADS_URL = 'private'
 
 # Sorl thumbnail
 

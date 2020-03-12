@@ -3,7 +3,8 @@ from django.core.files.storage import FileSystemStorage
 
 
 PROTECTED_UPLOADS_STORAGE = FileSystemStorage(
-    location=settings.PROTECTED_UPLOADS_ROOT)
+    location=settings.PROTECTED_UPLOADS_ROOT,
+    base_url=settings.PROTECTED_UPLOADS_URL)
 
 
 class ThumbnailStorage(FileSystemStorage):

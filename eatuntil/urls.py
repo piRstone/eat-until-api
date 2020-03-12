@@ -16,12 +16,15 @@ from accounts.views import (
     CreateUserAPIView,
     UserViewSet)
 
+from lists.views import ListViewSet
+
 
 router = DefaultRouter(trailing_slash=False)
-router.register('users', UserViewSet, base_name='user')
+router.register(r'users', UserViewSet, base_name='users')
+router.register(r'lists', ListViewSet, base_name='lists')
 
 api_urls = router.urls
-api_urls = [
+api_urls += [
     url(r'register', CreateUserAPIView.as_view(), name='register'),
     url(r'token-auth', obtain_jwt_token, name='token-auth'),
     url(r'token-refresh', refresh_jwt_token, name='token-refresh'),
@@ -30,7 +33,7 @@ api_urls = [
 
 urlpatterns = [
     url(r'admin/', admin.site.urls),
-    url(r'api/', include(api_urls))
+    url(r'api/', include((api_urls, 'api'), namespace='api'))
 ]
 
 if settings.DEBUG:
@@ -48,10 +51,6 @@ if settings.DEBUG:
     urlpatterns += [
         # path('__debug__/', include(debug_toolbar.urls)),  # For admin views
 
-        # For now, serve API doc only in dev mode. Maybe later should we open
-        # it for other company... We'll see when time is coming!
-        # path('drf/', include('rest_framework.urls', namespace='rest_framework')),
-        # path('redoc/', schema_view.with_ui('redoc'), name='schema-redoc'),
         url(r'swagger/', schema_view.with_ui('swagger'), name='schema-swagger-ui'),
     ]
 
