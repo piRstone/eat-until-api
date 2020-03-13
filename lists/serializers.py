@@ -10,6 +10,6 @@ class ListSerializer(serializers.ModelSerializer):
     class Meta:
         model = List
         fields = ('id', 'name', 'user')
-        extra_kwrags = {
-            'user': {'read_only': True}
+        extra_kwargs = {
+            'user': {'read_only': True,}
         }
