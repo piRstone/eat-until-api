@@ -3,6 +3,7 @@ from django.http import Http404
 from rest_framework import permissions, viewsets
 from rest_framework.decorators import action
 from rest_framework.generics import CreateAPIView
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework_jwt.settings import api_settings
 
@@ -11,7 +12,8 @@ from sorl.thumbnail import get_thumbnail
 
 from .serializers import (
     CreateUserSerializer,
-    UserSerializer)
+    UserSerializer,
+    ResetPasswordSerializer)
 from .models import User
 
 
@@ -45,11 +47,10 @@ class CreateUserAPIView(CreateAPIView):
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
 
-        data = {
-            'token': self._get_token(serializer.instance)
-        }
+        user = serializer.instance
+        user.send_activation_link()
 
-        return Response(data, status=201, headers=headers)
+        return Response(status=201, headers=headers)
 
 
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
@@ -61,7 +62,21 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
         # TODO : filter here !
         return User.objects.all()
 
-    @action(detail=True, methods=['get'])
+    def get_serializer_class(self):
+        """
+        By using this method, we could returns the proper serializer for schema
+        core API docs like Swagger.
+        """
+        if self.action in ['activate']:
+            return ResetPasswordSerializer
+
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        if self.action == 'change_password':
+            context['user'] = self.request.user
+        return context
+
+    @action(methods=['get'], detail=True)
     def avatar_thumbnail(self, request, pk=None):
         """
         Returns the avatar thumbnail file
@@ -74,3 +89,14 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
         thumbnail = get_thumbnail(
             baby.avatar, '50x50', crop='center', quality=90)
         return sendfile(request, thumbnail.storage.path(thumbnail.name))
+
+    @action(methods=['post'], detail=False, url_path='activate', permission_classes=[AllowAny])
+    def activate(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        user = serializer.context['user']
+        user.is_active = True
+        user.save()
+
+        return Response(data=UserSerializer(instance=user).data)

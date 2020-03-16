@@ -14,6 +14,8 @@ CORS_ORIGIN_ALLOW_ALL = True
 # Allow any password
 AUTH_PASSWORD_VALIDATORS = []
 
+PROJECT_BASE_URL = 'http://localhost:8000'
+
 try:
     from .local import *
 except ImportError:

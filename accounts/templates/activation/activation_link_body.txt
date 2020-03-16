@@ -1,0 +1,11 @@
+{% load i18n %}{% autoescape off %}
+{% blocktrans %}
+Bienvenue sur {{ project_name }} !
+
+Votre compte a bien été créé ! Activez votre compte en cliquant sur le lien d'activation ci-dessous :
+
+{{ activation_link }}
+
+L'équipe {{ project_name }}
+{% endblocktrans %}
+{% endautoescape %}

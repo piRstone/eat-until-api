@@ -136,6 +136,8 @@ REST_FRAMEWORK = {
     ]
 }
 
+DEFAULT_FROM_EMAIL = 'no-reply@eatuntil.pirstone.com'
+
 # JSON Web Token
 
 JWT_AUTH = {
@@ -148,6 +150,11 @@ JWT_AUTH = {
 
 PROTECTED_UPLOADS_ROOT = os.path.join(ROOT_DIR, 'private')
 PROTECTED_UPLOADS_URL = 'private'
+
+PROJECT_NAME = 'Eat Until'
+PROJECT_BASE_URL = None
+PROJECT_EMAIL = 'eatuntil@pirstone.com'
+PROJECT_WEBSITE = 'eatuntil.pirstone.com'
 
 # Sorl thumbnail
 
