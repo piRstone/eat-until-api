@@ -51,6 +51,7 @@ if settings.DEBUG:
     urlpatterns += [
         # path('__debug__/', include(debug_toolbar.urls)),  # For admin views
 
+        url(r'drf/', include('rest_framework.urls', namespace='rest_framework')),
         url(r'swagger/', schema_view.with_ui('swagger'), name='schema-swagger-ui'),
     ]
 

@@ -152,3 +152,9 @@ PROTECTED_UPLOADS_URL = 'private'
 # Sorl thumbnail
 
 THUMBNAIL_STORAGE = 'eatuntil.commons.storages.ThumbnailStorage'
+
+SWAGGER_SETTINGS = {
+    'USE_SESSION_AUTH': True,
+    'LOGIN_URL': 'rest_framework:login',
+    'LOGOUT_URL': 'rest_framework:logout',
+}
