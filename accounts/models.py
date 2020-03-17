@@ -168,3 +168,21 @@ class User(AbstractBaseUser, PermissionsMixin):
             ))
             raise Exception(_(
             "An error occured while sending an activation link to %(user)s" % {'user': self}))
+
+    def send_reset_password_link(self):
+        token = self.token_generator.make_token(self)
+        context = {
+            'reset_password_link': self._get_frontend_link_token(token, 'reset-password'),
+        }
+        success = self.send_user_email(
+            subject_tmpl='reset-password/reset_password_link_subject.txt',
+            body_txt_tmpl='reset-password/reset_password_link_body.txt',
+            body_html_tmpl='reset-password/reset_password_link_body.html',
+            context=context,
+        )
+        if not success:
+            logger.error('An error occured while sending an reset password link to the user {} ({})'.format(
+                self, self.pk
+            ))
+            raise Exception(_(
+                "An error occured while sending an reset password link to %(user)s" % {'user': self}))

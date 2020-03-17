@@ -55,25 +55,7 @@ class UserSerializer(ModelSerializer):
         read_only_fields = ['email', 'is_active']
 
 
-class PasswordConfirmSerializer(serializers.Serializer):
-    password1 = serializers.CharField(required=True, max_length=128)
-    password2 = serializers.CharField(required=True, max_length=128)
-
-    def validate(self, attrs):
-        validated_data = super().validate(attrs)
-
-        if validated_data['password1'] != validated_data['password2']:
-            raise ValidationError(_('Password don\'t match.'))
-
-        try:
-            password_validation.validate_password(validated_data['password2'])
-        except DjangoValidationError as exc:
-            raise ValidationError(str(exc))
-
-        return validated_data
-
-
-class ResetPasswordSerializer(serializers.Serializer):
+class UserTokenSerializer(serializers.Serializer):
     uidb64 = serializers.CharField(required=True, max_length=255)
     token = serializers.CharField(required=True, max_length=255)
 
@@ -96,5 +78,22 @@ class ResetPasswordSerializer(serializers.Serializer):
         return super().validate(attrs)
 
 
-class ResetPasswordLinkSerializer(serializers.Serializer):
+class ResetPasswordSerializer(UserTokenSerializer):
+    password1 = serializers.CharField(required=True, max_length=128)
+    password2 = serializers.CharField(required=True, max_length=128)
+
+    def validate(self, attrs):
+        validated_data = super().validate(attrs)
+
+        if validated_data['password1'] != validated_data['password2']:
+            raise ValidationError(_('Password don\'t match.'))
+
+        try:
+            password_validation.validate_password(validated_data['password2'])
+        except DjangoValidationError as exc:
+            raise ValidationError(str(exc))
+
+        return validated_data
+
+class ForgotPasswordSerializer(serializers.Serializer):
     email = serializers.CharField(required=True, max_length=255)

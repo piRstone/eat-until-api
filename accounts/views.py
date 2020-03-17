@@ -1,7 +1,10 @@
 from django.http import Http404
+from django.utils.translation import ugettext_lazy as _
 
+from rest_framework import status
 from rest_framework import permissions, viewsets
 from rest_framework.decorators import action
+from rest_framework.exceptions import ValidationError
 from rest_framework.generics import CreateAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
@@ -13,6 +16,8 @@ from sorl.thumbnail import get_thumbnail
 from .serializers import (
     CreateUserSerializer,
     UserSerializer,
+    UserTokenSerializer,
+    ForgotPasswordSerializer,
     ResetPasswordSerializer)
 from .models import User
 
@@ -67,7 +72,11 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
         By using this method, we could returns the proper serializer for schema
         core API docs like Swagger.
         """
-        if self.action in ['activate']:
+        if self.action == 'activate':
+            return UserTokenSerializer
+        elif self.action == 'forgot_password':
+            return ForgotPasswordSerializer
+        elif self.action == 'reset_password':
             return ResetPasswordSerializer
 
     def get_serializer_context(self):
@@ -100,3 +109,30 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
         user.save()
 
         return Response(data=UserSerializer(instance=user).data)
+
+    @action(methods=['post'], detail=False, url_path='forgot-password', permission_classes=[AllowAny])
+    def forgot_password(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        try:
+            user = User.objects.get(email=serializer.data['email'])
+        except User.DoesNotExist:
+            raise ValidationError(_('An error occured.'))
+
+        try:
+            user.send_reset_password_link()
+        except Exception as exc:
+            raise ValidationError(str(exc))
+        else:
+            return Response(status=status.HTTP_200_OK)
+
+    @action(methods=['post'], detail=False, url_path='reset-password', permission_classes=[AllowAny])
+    def reset_password(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        user = serializer.context['user']
+        user.set_password(serializer.data['password1'])
+        user.save()
+        return Response(status=status.HTTP_200_OK)
