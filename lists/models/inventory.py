@@ -6,26 +6,9 @@ from django.conf import settings
 
 from eatuntil.commons.models import TimeStampedModel
 
-
-class Product(TimeStampedModel):
-    name = models.CharField(max_length=264)
-
-    expiration_date = models.DateField(
-        _('expiration date'))
-
-    user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        related_name='products',
-        verbose_name=_('owner'),
-        on_delete=models.CASCADE)
-
-    def __str__(self):
-        return self.name
-
-
 class ListManager(models.Manager):
 
-    def owner_by(self, user):
+    def owned_by(self, user):
         return self\
             .filter(Q(user=user))\
             .order_by('pk')\
@@ -40,8 +23,6 @@ class List(TimeStampedModel):
         related_name='lists',
         verbose_name=_('owner'),
         on_delete=models.CASCADE)
-
-    products = models.ManyToManyField(Product, related_name='products')
 
     objects = ListManager()
 
