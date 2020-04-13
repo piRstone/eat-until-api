@@ -6,7 +6,7 @@ from django.conf import settings
 
 from eatuntil.commons.models import TimeStampedModel
 
-class ListManager(models.Manager):
+class InventoryManager(models.Manager):
 
     def owned_by(self, user):
         return self\
@@ -15,19 +15,19 @@ class ListManager(models.Manager):
             .distinct('pk')
 
 
-class List(TimeStampedModel):
+class Inventory(TimeStampedModel):
     name = models.CharField(max_length=264)
 
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
-        related_name='lists',
+        related_name='inventories',
         verbose_name=_('owner'),
         on_delete=models.CASCADE)
 
-    objects = ListManager()
+    objects = InventoryManager()
 
     def __str__(self):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('api:list-detail', args=[self.pk])
+        return reverse('api:inventory-detail', args=[self.pk])

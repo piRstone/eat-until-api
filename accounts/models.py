@@ -57,11 +57,6 @@ class UserManager(BaseUserManager):
         extra_fields['is_superuser'] = True
         return self._create_user(email, password, **extra_fields)
 
-    def visible_for_user(self, user):
-        return (
-            self.filter(Q(pk=user.pk) | Q(shares__group__user=user) | Q(shares__group__shared_with=user)) |
-            self.filter(pk__in=user.shared_wishlists.values_list('user_id', flat=True))).distinct('pk')
-
 
 class User(AbstractBaseUser, PermissionsMixin):
     """

@@ -4,7 +4,7 @@ from django.conf import settings
 
 from eatuntil.commons.models import TimeStampedModel
 
-from .inventory import List
+from .inventory import Inventory
 
 class Product(TimeStampedModel):
     name = models.CharField(max_length=264)
@@ -15,7 +15,7 @@ class Product(TimeStampedModel):
     notification_delay = models.IntegerField(
         _('notification delay'), default=3)
 
-    inventory = models.ForeignKey(List, verbose_name=_(
+    inventory = models.ForeignKey(Inventory, verbose_name=_(
         'inventory'), on_delete=models.CASCADE)
 
     user = models.ForeignKey(

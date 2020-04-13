@@ -2,13 +2,13 @@ import factory
 
 from accounts.factories import UserFactory
 
-from .models import List
+from .models import Inventory
 
 
-class ListFactory(factory.DjangoModelFactory):
+class InventoryFactory(factory.DjangoModelFactory):
 
     class Meta:
-        model = List
+        model = Inventory
 
     name = "My list"
     user = factory.Subfactory(UserFactory)

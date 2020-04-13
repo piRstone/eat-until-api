@@ -2,13 +2,13 @@ from rest_framework import serializers
 
 from accounts.serializers import UserSerializer
 
-from .models import List, Product
+from .models import Inventory, Product
 
 
-class ListSerializer(serializers.ModelSerializer):
+class InventorySerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = List
+        model = Inventory
         fields = ('id', 'name', 'user')
         extra_kwargs = {
             'user': {'read_only': True,}

@@ -16,12 +16,12 @@ from accounts.views import (
     CreateUserAPIView,
     UserViewSet)
 
-from lists.views import ListViewSet, ProductViewSet
+from inventories.views import InventoryViewSet, ProductViewSet
 
 
 router = DefaultRouter(trailing_slash=False)
 router.register(r'users', UserViewSet, base_name='users')
-router.register(r'lists', ListViewSet, base_name='lists')
+router.register(r'inventories', InventoryViewSet, base_name='inventories')
 router.register(r'products', ProductViewSet, base_name='products')
 
 api_urls = router.urls
