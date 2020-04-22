@@ -40,7 +40,7 @@ class CreateUserSerializer(ModelSerializer):
 class UserSerializer(ModelSerializer):
 
     avatar_thumbnail_url = ProtectedFileURLField(
-        'api:user-avatar-thumbnail',
+        'api:users-avatar-thumbnail',
         source='avatar')
 
     class Meta:

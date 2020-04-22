@@ -36,7 +36,7 @@ class CreateUserAPIView(CreateAPIView):
     """
     User registration API view
     """
-    permission_classes = (permissions.AllowAny,)
+    permission_classes = [permissions.AllowAny,]
     serializer_class = CreateUserSerializer
 
     def _get_token(self, user):
@@ -61,7 +61,7 @@ class CreateUserAPIView(CreateAPIView):
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
 
     serializer_class = UserSerializer
-    permission_classes = (permissions.IsAuthenticated, )
+    permission_classes = [permissions.IsAuthenticated,]
 
     def get_queryset(self):
         # TODO : filter here !
@@ -78,6 +78,8 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
             return ForgotPasswordSerializer
         elif self.action == 'reset_password':
             return ResetPasswordSerializer
+        else:
+            return UserSerializer
 
     def get_serializer_context(self):
         context = super().get_serializer_context()
@@ -90,13 +92,13 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
         """
         Returns the avatar thumbnail file
         """
-        baby = self.get_object()
+        user = self.get_object()
 
-        if not baby.avatar:
+        if not user.avatar:
             raise Http404
 
         thumbnail = get_thumbnail(
-            baby.avatar, '50x50', crop='center', quality=90)
+            user.avatar, '50x50', crop='center', quality=90)
         return sendfile(request, thumbnail.storage.path(thumbnail.name))
 
     @action(methods=['post'], detail=False, url_path='activate', permission_classes=[AllowAny])
