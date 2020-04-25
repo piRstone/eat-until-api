@@ -120,7 +120,7 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
         try:
             user = User.objects.get(email=serializer.data['email'])
         except User.DoesNotExist:
-            raise ValidationError(_('An error occured.'))
+            return Response(status=status.HTTP_200_OK)
 
         try:
             user.send_reset_password_link()
