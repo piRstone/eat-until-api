@@ -18,6 +18,8 @@ class Product(TimeStampedModel):
     inventory = models.ForeignKey(Inventory, verbose_name=_(
         'inventory'), on_delete=models.CASCADE)
 
+    ean13 = models.CharField(_('Code-barre ean13'), max_length=13, blank=True)
+
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         related_name='products',
