@@ -19,7 +19,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ('id', 'name', 'expiration_date', 'notification_delay', 'inventory', 'user')
+        fields = ('id', 'name', 'expiration_date', 'notification_delay', 'inventory', 'ean13', 'user')
         extra_kwargs = {
             'user': {'read_only': True, }
         }

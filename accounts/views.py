@@ -86,6 +86,11 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
             context['user'] = self.request.user
         return context
 
+    @action(methods=['get'], detail=False, url_path='me', permission_classes=[IsAuthenticated])
+    def me(self, request, *args, **kwargs):
+        serializer = self.get_serializer(instance=request.user)
+        return Response(data=serializer.data)
+
     @action(methods=['get'], detail=True)
     def avatar_thumbnail(self, request, pk=None):
         """
