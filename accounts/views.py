@@ -1,8 +1,7 @@
 from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 
-from rest_framework import status
-from rest_framework import permissions, viewsets
+from rest_framework import status, permissions, viewsets
 from rest_framework.decorators import action
 from rest_framework.exceptions import ValidationError
 from rest_framework.generics import CreateAPIView
