@@ -15,6 +15,13 @@ class InventorySerializer(serializers.ModelSerializer):
         }
 
 
+class InventoryEmptySerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Inventory
+        fields = []
+
+
 class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:

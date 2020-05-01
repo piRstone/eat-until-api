@@ -1,9 +1,11 @@
 from rest_framework import status, permissions, viewsets
+from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from .models import Inventory, Product
 from .permissions import InventoryPermission, ProductPermission
-from .serializers import InventorySerializer, ProductSerializer
+from .serializers import InventorySerializer, InventoryEmptySerializer, ProductSerializer
 
 
 class InventoryViewSet(viewsets.ModelViewSet):
@@ -18,6 +20,12 @@ class InventoryViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         """Set the user as owner"""
         serializer.save(user=self.request.user)
+
+    @action(methods=['post'], detail=False, url_path=r'(?P<id>\d+)/clear_products', permission_classes=[IsAuthenticated])
+    def clear_products(self, request, id, *args, **kwargs):
+        serializer_class = InventoryEmptySerializer
+        Product.objects.filter(inventory_id=id).delete()
+        return Response(status=status.HTTP_200_OK)
 
 
 class ProductViewSet(viewsets.ModelViewSet):
