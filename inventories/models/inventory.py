@@ -26,6 +26,10 @@ class Inventory(TimeStampedModel):
 
     objects = InventoryManager()
 
+    @property
+    def products_count(self):
+        return self.product_set.count()
+
     def __str__(self):
         return self.name
 

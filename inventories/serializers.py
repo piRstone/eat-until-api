@@ -9,9 +9,10 @@ class InventorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Inventory
-        fields = ('id', 'name', 'user')
+        fields = ['created', 'modified', 'id',
+                  'name', 'user', 'products_count']
         extra_kwargs = {
-            'user': {'read_only': True,}
+            'user': {'read_only': True, }
         }
 
 
@@ -26,7 +27,8 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ('id', 'name', 'expiration_date', 'notification_delay', 'inventory', 'ean13', 'user')
+        fields = ['created', 'modified', 'id', 'name', 'expiration_date',
+                  'notification_delay', 'inventory', 'ean13', 'user']
         extra_kwargs = {
             'user': {'read_only': True, }
         }
