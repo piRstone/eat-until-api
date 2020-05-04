@@ -1,0 +1,13 @@
+{% load i18n %}{% autoescape off %}
+{% blocktrans %}
+{{ count }} produits arrivent à expiration
+{% endblocktrans %}
+
+{% for product in products %}
+- {{ product.name }}
+{% endfor %}
+
+{% blocktrans %}
+L'équipe {{ project_name }}
+{% endblocktrans %}
+{% endautoescape %}

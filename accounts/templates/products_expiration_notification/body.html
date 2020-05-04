@@ -1,0 +1,175 @@
+{% load i18n %}{% autoescape off %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap');
+
+    body {
+      font-family: 'Poppins', Helvetica, Arial, sans-serif;
+      color: #212529;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.5em;
+    }
+
+    a {
+      color: #18D873;
+      text-decoration: none;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      list-style: none;
+      background-color: #f1f1f1;
+      padding: 10px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    li p {
+      margin: 0;
+    }
+
+    .date {
+      color: #7e7e7e;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .inventory {
+      font-size: 14px;
+    }
+
+    @media only screen and (max-width: 600px) {
+      table[class=w600], td[class=w600] { width: 300px !important; }
+      table[class=w560], td[class=w560] { width: 280px !important; }
+      table[class=w100], td[class=w100] { width: 50px !important; }
+      table[class=w20], td[class=w20] { width: 10px !important; }
+      td[class='w600 h20'] { width: 300px !important;  height: 10px !important; }
+      td[class=h20] {  height: 10px !important; }
+
+      h1{
+        font-size: 18px !important;
+        line-height: 1.4em !important;
+      }
+
+      p {
+        font-size: 12px !important;
+      }
+
+      .date, .inventory {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body style="margin:0px; padding:0px;">
+  <table border="0" cellspacing="0" cellpadding="0" width="100%" bgcolor="#f1f1f1">
+    <tbody>
+      <tr>
+        <td align="center">
+          <h1>{{ project_name }}</h1>
+        </td>
+      </tr>
+      <tr>
+        <td align="center">
+          <table border="0" cellspacing="0" cellpadding="0">
+            <tbody>
+              <tr>
+                <td class="w600" width="600px" height="20px"></td>
+              </tr>
+              <tr>
+                <td class="w600" width="600" align="left" style="background-color: #FFFFFF; border-radius:20px;">
+                  <table class="w600" width="600" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                      <tr>
+                        <td class="w600" width="600px" height="20px"></td>
+                      </tr>
+                      <tr>
+                        <table class="w600" width="600" border="0" cellspacing="0" cellpadding="0" style="background-color: #FFFFFF; border-radius:20px;">
+                          <tbody>
+                            <tr>
+                              <td class="w20" width="20"></td>
+                              <td class="w560" width="560">
+                                <h2>{{ count }} produits arrivent à expiration</h2>
+                              </td>
+                              <td class="w20" width="20"></td>
+                            </tr>
+                            <tr>
+                              <td class="w20" width="20"></td>
+                              <td class="w560" width="560" style="vertical-align:top;">
+                                <table class="w560" width="560">
+                                  <tbody>
+                                    <tr>
+                                      <td>
+                                          <ul>
+                                            {% for product in products %}
+                                              <li>
+                                                <div>
+                                                  <p>{{ product.name }}</p>
+                                                  <span class="date">{{ product.expiration_date }}</span>
+                                                </div>
+                                                <div>
+                                                  <span class="inventory">{{ product.inventory.name }}</span>
+                                                </div>
+                                              </li>
+                                            {% endfor %}
+                                          </ul>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                              <td class="w20" width="20"></td>
+                            </tr>
+                            <tr>
+                              <td class="w20" width="20"></td>
+                              <td class="w560" width="560" style="vertical-align:top;">
+                                <table class="w560" width="560">
+                                  <tbody>
+                                    <tr>
+                                      <td>
+                                        <p style="font-style: italic;">
+                                          {% blocktrans %}
+                                          L'équipe {{ project_name }}
+                                          {% endblocktrans %}
+                                        </p>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                              <td class="w20" width="20"></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td class="w600" width="600px" height="20px"></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
+{% endautoescape %}

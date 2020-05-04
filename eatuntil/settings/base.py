@@ -121,6 +121,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+STATIC_ROOT = os.path.join(ROOT_DIR, 'static')
 STATIC_URL = '/static/'
 
 # Django Rest Framework
@@ -155,6 +156,7 @@ PROJECT_NAME = 'Eat Until'
 PROJECT_BASE_URL = None
 PROJECT_EMAIL = 'eatuntil@pirstone.com'
 PROJECT_WEBSITE = 'eatuntil.pirstone.com'
+PROJECT_LOGO = 'logo.png'
 
 # Sorl thumbnail
 

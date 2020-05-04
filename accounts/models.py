@@ -1,10 +1,12 @@
 import logging
+from urllib.parse import urljoin
 from django.db import models
 from django.db.models import Q
 from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
     PermissionsMixin)
+from django.contrib.staticfiles.storage import staticfiles_storage
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.utils.translation import ugettext_lazy as _
 from django.utils.http import urlencode
@@ -119,6 +121,10 @@ class User(AbstractBaseUser, PermissionsMixin):
             'project_name': settings.PROJECT_NAME,
             'project_email': settings.PROJECT_EMAIL,
             'project_website': settings.PROJECT_WEBSITE,
+            'project_logo': urljoin(
+                settings.PROJECT_BASE_URL,
+                staticfiles_storage.url(settings.PROJECT_LOGO),
+            ),
             'user': self,
         })
 

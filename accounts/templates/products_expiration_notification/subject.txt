@@ -1,0 +1,2 @@
+{% load i18n %}
+{% blocktrans %}Des produits arrivent à expiration{% endblocktrans %}
