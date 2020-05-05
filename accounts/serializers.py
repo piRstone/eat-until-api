@@ -19,6 +19,8 @@ class CreateUserSerializer(ModelSerializer):
         model = get_user_model()
         fields = (
             'email',
+            'first_name',
+            'last_name',
             'password')
         extra_kwargs = {
             'password': {'write_only': True}
@@ -48,6 +50,8 @@ class UserSerializer(ModelSerializer):
         fields = (
             'id',
             'email',
+            'first_name',
+            'last_name',
             'avatar_thumbnail_url')
         extra_kwargs = {
             'email': {'required': True},

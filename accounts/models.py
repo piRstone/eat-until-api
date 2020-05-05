@@ -65,14 +65,18 @@ class User(AbstractBaseUser, PermissionsMixin):
     Custom User model
     """
 
+    first_name = models.CharField(_('First name'), max_length=254, blank=True)
+
+    last_name = models.CharField(_('Last name'), max_length=254, blank=True)
+
     token_generator = PasswordResetTokenGenerator()
 
     email = models.EmailField(
-        _("email address"),
+        _('email address'),
         unique=True)
 
     normalized_email = models.CharField(
-        _("normalized email address"),
+        _('normalized email address'),
         max_length=254,
         editable=False,
         unique=True)
@@ -84,11 +88,11 @@ class User(AbstractBaseUser, PermissionsMixin):
         blank=True)
 
     is_active = models.BooleanField(
-        _("active"),
+        _('active'),
         default=True)
 
     is_staff = models.BooleanField(
-        _("staff status"),
+        _('staff status'),
         default=False)
 
     objects = UserManager()
