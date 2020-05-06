@@ -17,11 +17,7 @@ class CreateUserSerializer(ModelSerializer):
 
     class Meta:
         model = get_user_model()
-        fields = (
-            'email',
-            'first_name',
-            'last_name',
-            'password')
+        fields = ['email', 'first_name', 'last_name', 'password',]
         extra_kwargs = {
             'password': {'write_only': True}
         }
@@ -47,16 +43,29 @@ class UserSerializer(ModelSerializer):
 
     class Meta:
         model = get_user_model()
-        fields = (
-            'id',
-            'email',
-            'first_name',
-            'last_name',
-            'avatar_thumbnail_url')
+        fields = ['id', 'email', 'first_name', 'last_name', 'avatar_thumbnail_url']
         extra_kwargs = {
             'email': {'required': True},
         }
         read_only_fields = ['email', 'is_active']
+
+
+class UserUpdateSerializer(ModelSerializer):
+
+    class Meta:
+        model = get_user_model()
+        fields = ['id', 'email', 'first_name', 'last_name',]
+        extra_kwargs = {
+            'email': {'required': True},
+        }
+
+    def validate_email(self, email):
+        view = self.context['view']
+        user = view.request.user
+        if User.objects.filter(email__iexact=email).exclude(email__iexact=user.email).exists():
+            raise serializers.ValidationError(
+                _("That email is already associated to an account"))
+        return email
 
 
 class UserTokenSerializer(serializers.Serializer):

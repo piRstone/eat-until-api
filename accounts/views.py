@@ -15,6 +15,7 @@ from sorl.thumbnail import get_thumbnail
 from .serializers import (
     CreateUserSerializer,
     UserSerializer,
+    UserUpdateSerializer,
     UserTokenSerializer,
     ForgotPasswordSerializer,
     ResetPasswordSerializer)
@@ -78,6 +79,8 @@ class UserViewSet(viewsets.ModelViewSet):
             return ForgotPasswordSerializer
         elif self.action == 'reset_password':
             return ResetPasswordSerializer
+        elif self.action == 'update' or self.action == 'partial_update':
+            return UserUpdateSerializer
         else:
             return UserSerializer
 
