@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from rest_framework import status, permissions, viewsets
 from rest_framework.decorators import action
 from rest_framework.exceptions import ValidationError
-from rest_framework.generics import CreateAPIView
+from rest_framework.generics import CreateAPIView, UpdateAPIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework_jwt.settings import api_settings
@@ -18,6 +18,7 @@ from .serializers import (
     UserTokenSerializer,
     ForgotPasswordSerializer,
     ResetPasswordSerializer)
+from .permissions import isOwnerOrAdmin
 from .models import User
 
 
@@ -35,8 +36,8 @@ class CreateUserAPIView(CreateAPIView):
     """
     User registration API view
     """
-    permission_classes = [permissions.AllowAny,]
     serializer_class = CreateUserSerializer
+    permission_classes = [permissions.AllowAny,]
 
     def _get_token(self, user):
         jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
@@ -57,10 +58,10 @@ class CreateUserAPIView(CreateAPIView):
         return Response(status=201, headers=headers)
 
 
-class UserViewSet(viewsets.ReadOnlyModelViewSet):
+class UserViewSet(viewsets.ModelViewSet):
 
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated,]
+    permission_classes = [isOwnerOrAdmin]
 
     def get_queryset(self):
         # TODO : filter here !
@@ -91,7 +92,7 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
         serializer = self.get_serializer(instance=request.user)
         return Response(data=serializer.data)
 
-    @action(methods=['get'], detail=True)
+    @action(methods=['get'], detail=True, permission_classes=[AllowAny])
     def avatar_thumbnail(self, request, pk=None):
         """
         Returns the avatar thumbnail file
