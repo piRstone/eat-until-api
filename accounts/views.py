@@ -79,7 +79,7 @@ class UserViewSet(viewsets.ModelViewSet):
             return ForgotPasswordSerializer
         elif self.action == 'reset_password':
             return ResetPasswordSerializer
-        elif self.action == 'update' or self.action == 'partial_update':
+        elif self.action in ['update', 'partial_update']:
             return UserUpdateSerializer
         else:
             return UserSerializer
