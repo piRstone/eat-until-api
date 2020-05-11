@@ -6,6 +6,7 @@ from django.conf import settings
 
 from eatuntil.commons.models import TimeStampedModel
 
+
 class InventoryManager(models.Manager):
 
     def owned_by(self, user):
@@ -31,7 +32,7 @@ class Inventory(TimeStampedModel):
         return self.product_set.count()
 
     def __str__(self):
-        return self.name
+        return '{}'.format(self.name)
 
     def get_absolute_url(self):
         return reverse('api:inventory-detail', args=[self.pk])

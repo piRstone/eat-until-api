@@ -1,0 +1,25 @@
+box: python:3.7
+# This is the build pipeline. Pipelines are the core of wercker
+# Read more about pipelines on our dev center
+# https://devcenter.wercker.com/development/pipelines/
+build:
+  # The steps that will be executed on build
+  # Steps make up the actions in your pipeline
+  # Read more about steps on our dev center:
+  # https://devcenter.wercker.com/development/steps/
+  steps:
+
+    # A step that executes `pip install` command.
+    - pip-install:
+        requirements_file: "requirements/dev.txt"
+    - script:
+        name: Migrate
+        code: python manage.py migrate
+    - script:
+        name: Pylint
+        code : python -m pylint.__main__ accounts eatuntil inventories --rcfile=setup.cfg
+    - script:
+        name: Unit Tests
+        code: |
+            python -m coverage.__main__ run manage.py test
+            python -m coverage.__main__ html

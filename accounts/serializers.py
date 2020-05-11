@@ -1,3 +1,7 @@
+# pylint: disable=abstract-method
+"""
+TODO remove the pylint disable if update and create are added in serializers.Serializer classes
+"""
 from django.contrib.auth import password_validation
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError as DjangoValidationError
@@ -31,7 +35,7 @@ class CreateUserSerializer(ModelSerializer):
     def validate_email(self, email):
         if User.objects.filter(email__iexact=email).exists():
             raise serializers.ValidationError(
-                _("That email is already associated to an account"))
+                _('That email is already associated to an account'))
         return email
 
 
@@ -107,6 +111,7 @@ class ResetPasswordSerializer(UserTokenSerializer):
             raise ValidationError(str(exc))
 
         return validated_data
+
 
 class ForgotPasswordSerializer(serializers.Serializer):
     email = serializers.CharField(required=True, max_length=255)

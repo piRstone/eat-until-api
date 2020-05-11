@@ -1,11 +1,9 @@
 from django.http import Http404
-from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import status, permissions, viewsets
 from rest_framework.decorators import action
 from rest_framework.exceptions import ValidationError
-from rest_framework.generics import CreateAPIView, UpdateAPIView
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 from rest_framework_jwt.settings import api_settings
 
@@ -38,7 +36,7 @@ class CreateUserAPIView(CreateAPIView):
     User registration API view
     """
     serializer_class = CreateUserSerializer
-    permission_classes = [permissions.AllowAny,]
+    permission_classes = [permissions.AllowAny, ]
 
     def _get_token(self, user):
         jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
@@ -75,14 +73,14 @@ class UserViewSet(viewsets.ModelViewSet):
         """
         if self.action == 'activate':
             return UserTokenSerializer
-        elif self.action == 'forgot_password':
+        if self.action == 'forgot_password':
             return ForgotPasswordSerializer
-        elif self.action == 'reset_password':
+        if self.action == 'reset_password':
             return ResetPasswordSerializer
-        elif self.action in ['update', 'partial_update']:
+        if self.action in ['update', 'partial_update']:
             return UserUpdateSerializer
-        else:
-            return UserSerializer
+        # default option
+        return super().get_serializer_class()
 
     def get_serializer_context(self):
         context = super().get_serializer_context()
@@ -90,13 +88,14 @@ class UserViewSet(viewsets.ModelViewSet):
             context['user'] = self.request.user
         return context
 
-    @action(methods=['get'], detail=False, url_path='me', permission_classes=[IsAuthenticated])
-    def me(self, request, *args, **kwargs):
+    @action(methods=['get'], detail=False, url_path='me',
+            permission_classes=[permissions.IsAuthenticated])
+    def me(self, request):
         serializer = self.get_serializer(instance=request.user)
         return Response(data=serializer.data)
 
-    @action(methods=['get'], detail=True, permission_classes=[AllowAny])
-    def avatar_thumbnail(self, request, pk=None):
+    @action(methods=['get'], detail=True, permission_classes=[permissions.AllowAny])
+    def avatar_thumbnail(self, request):
         """
         Returns the avatar thumbnail file
         """
@@ -109,8 +108,9 @@ class UserViewSet(viewsets.ModelViewSet):
             user.avatar, '50x50', crop='center', quality=90)
         return sendfile(request, thumbnail.storage.path(thumbnail.name))
 
-    @action(methods=['post'], detail=False, url_path='activate', permission_classes=[AllowAny])
-    def activate(self, request, *args, **kwargs):
+    @action(methods=['post'], detail=False, url_path='activate',
+            permission_classes=[permissions.AllowAny])
+    def activate(self, request):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
@@ -120,8 +120,9 @@ class UserViewSet(viewsets.ModelViewSet):
 
         return Response(data=UserSerializer(instance=user).data)
 
-    @action(methods=['post'], detail=False, url_path='forgot-password', permission_classes=[AllowAny])
-    def forgot_password(self, request, *args, **kwargs):
+    @action(methods=['post'], detail=False, url_path='forgot-password',
+            permission_classes=[permissions.AllowAny])
+    def forgot_password(self, request):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
@@ -137,8 +138,9 @@ class UserViewSet(viewsets.ModelViewSet):
         else:
             return Response(status=status.HTTP_200_OK)
 
-    @action(methods=['post'], detail=False, url_path='reset-password', permission_classes=[AllowAny])
-    def reset_password(self, request, *args, **kwargs):
+    @action(methods=['post'], detail=False, url_path='reset-password',
+            permission_classes=[permissions.AllowAny])
+    def reset_password(self, request):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
