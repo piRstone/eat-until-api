@@ -11,10 +11,10 @@ class AccountsTestCase(TestCase):
 
     def test_cant_register_twice_with_same_email(self):
         """Email address must be unique"""
-        UserFactory.create(email="foo@bar.com")
+        UserFactory.create(email='foo@bar.com')
 
         with self.assertRaises(IntegrityError):
-            UserFactory.create(email="FOO@BAR.COM")
+            UserFactory.create(email='FOO@BAR.COM')
 
 
 class AccountsAPITestCase(APITestCase):
@@ -105,6 +105,9 @@ class AccountsAPITestCase(APITestCase):
         })
 
         self.assertEqual(response.status_code, 201)
+        # self.assertIn('token', response.data)
+        # self.assertEqual(response.data['email'], 'foo@bar.com')
+        # self.assertNotIn('password', response.data)
 
     def test_cant_register_twice_the_same_email(self):
         """An anonymous user can't register twice with the same email"""

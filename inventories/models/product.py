@@ -6,6 +6,7 @@ from eatuntil.commons.models import TimeStampedModel
 
 from .inventory import Inventory
 
+
 class Product(TimeStampedModel):
     name = models.CharField(max_length=264)
 
@@ -27,4 +28,4 @@ class Product(TimeStampedModel):
         on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return '{}'.format(self.name)

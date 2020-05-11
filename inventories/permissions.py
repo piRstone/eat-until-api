@@ -7,8 +7,7 @@ class InventoryPermission(permissions.BasePermission):
         """Only the owned can perform write operations"""
         if request.method in permissions.SAFE_METHODS:
             return True
-        else:
-            return obj.user == request.user
+        return obj.user == request.user
 
 
 class ProductPermission(permissions.BasePermission):
@@ -17,5 +16,4 @@ class ProductPermission(permissions.BasePermission):
         """Only the owned can perform write operations"""
         if request.method in permissions.SAFE_METHODS:
             return True
-        else:
-            return obj.user == request.user
+        return obj.user == request.user

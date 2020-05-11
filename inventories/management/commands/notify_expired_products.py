@@ -3,7 +3,6 @@ from datetime import date, timedelta
 from django.core.management.base import BaseCommand
 
 from accounts.models import User
-from inventories.models import Product
 
 
 class Command(BaseCommand):
@@ -19,7 +18,7 @@ class Command(BaseCommand):
 
             print('{} : {} produits périment aujourd\'hui'.format(user.email, len(products)))
 
-            if len(products):
+            if products:
                 context = {
                     'count': len(products),
                     'products': products

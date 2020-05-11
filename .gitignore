@@ -9,6 +9,9 @@ __pycache__
 
 .python-version
 venv
+.virtualenv
+.venv
+.wercker
 
 /static/*
 !/static/README.md

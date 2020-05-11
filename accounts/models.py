@@ -1,7 +1,7 @@
 import logging
+import smtplib
 from urllib.parse import urljoin
 from django.db import models
-from django.db.models import Q
 from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
@@ -36,7 +36,7 @@ class UserManager(BaseUserManager):
         Creates and saves a User
         """
         if not email:
-            raise ValueError("The given email must be set")
+            raise ValueError('The given email must be set')
 
         # Normalize email
         email = self.normalize_email(email)
@@ -112,13 +112,15 @@ class User(AbstractBaseUser, PermissionsMixin):
     def get_short_name(self):
         return self.email
 
-    def send_user_email(self, subject_tmpl, body_txt_tmpl, body_html_tmpl, recipients=None, context=None):
+    def send_user_email(self, subject_tmpl, body_txt_tmpl, body_html_tmpl, recipients=None,
+                        context=None):
 
         if not recipients:
             if not self.email:
-                raise Exception(_('No email send to user "%(user)s" because he has no email.') % {'user': self})
-            else:
-                recipients = [self.email]
+                raise Exception(
+                    _('No email send to user "%(user)s" because he has no email.') % {'user': self}
+                )
+            recipients = [self.email]
 
         context = context or {}
         context.update({
@@ -131,8 +133,8 @@ class User(AbstractBaseUser, PermissionsMixin):
             ),
             'user': self,
         })
-
-        subject = loader.render_to_string(subject_tmpl, context) # Email subject *must not* contain newlines
+        # Email subject *must not* contain newlines
+        subject = loader.render_to_string(subject_tmpl, context)
         subject = ''.join(subject.splitlines())
         body_txt = loader.render_to_string(body_txt_tmpl, context)
         body_html = loader.render_to_string(body_html_tmpl, context)
@@ -146,9 +148,10 @@ class User(AbstractBaseUser, PermissionsMixin):
                 recipient_list=recipients or [self.email],
                 fail_silently=False,  # Catch exception for purpose
             )
-        except Exception as exc:
-            logger.info('An error occured while sending a user email to {} ({}) with exception {}'.format(
-                self, self.pk, str(exc)))
+        except smtplib.SMTPException as exc:
+            msg = ('An error occured while sending a user email '
+                   'to %s (%s) with exception %s') % (self, self.pk, str(exc))
+            logger.info(msg)
             return False
         else:
             return success
@@ -166,13 +169,14 @@ class User(AbstractBaseUser, PermissionsMixin):
         )
 
         if success:
-            logger.info('An activation link has been sent to the user {} ({})'.format(self, self.pk))
+            logger.info('An activation link has been sent to the user %s (%s)', self, self.pk)
         else:
-            logger.error('An error occured while sending an activation link to the user {} ({})'.format(
+            logger.error(
+                'An error occured while sending an activation link to the user %s (%s)',
                 self, self.pk
-            ))
+            )
             raise Exception(_(
-            "An error occured while sending an activation link to %(user)s" % {'user': self}))
+                'An error occured while sending an activation link to %(user)s' % {'user': self}))
 
     def send_reset_password_link(self):
         token = self.token_generator.make_token(self)
@@ -186,8 +190,11 @@ class User(AbstractBaseUser, PermissionsMixin):
             context=context,
         )
         if not success:
-            logger.error('An error occured while sending an reset password link to the user {} ({})'.format(
-                self, self.pk
-            ))
-            raise Exception(_(
-                "An error occured while sending an reset password link to %(user)s" % {'user': self}))
+            logger.error(
+                'An error occured while sending an reset password link to the '
+                'user %s (%s)', self, self.pk)
+            exception_message = _(
+                'An error occured while sending an reset password link '
+                'to %(user)s' % {'user': self}
+            )
+            raise Exception(exception_message)

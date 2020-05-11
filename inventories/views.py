@@ -1,11 +1,10 @@
 from rest_framework import status, permissions, viewsets
 from rest_framework.decorators import action
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from .models import Inventory, Product
 from .permissions import InventoryPermission, ProductPermission
-from .serializers import InventorySerializer, InventoryEmptySerializer, ProductSerializer
+from .serializers import InventorySerializer, ProductSerializer
 
 
 class InventoryViewSet(viewsets.ModelViewSet):
@@ -21,10 +20,10 @@ class InventoryViewSet(viewsets.ModelViewSet):
         """Set the user as owner"""
         serializer.save(user=self.request.user)
 
-    @action(methods=['post'], detail=False, url_path=r'(?P<id>\d+)/clear_products', permission_classes=[IsAuthenticated])
-    def clear_products(self, request, id, *args, **kwargs):
-        serializer_class = InventoryEmptySerializer
-        Product.objects.filter(inventory_id=id).delete()
+    @action(methods=['post'], detail=False, url_path=r'(?P<id>\d+)/clear_products',
+            permission_classes=[permissions.IsAuthenticated])
+    def clear_products(self, request, inventory_id, *args, **kwargs):  # pylint: disable=unused-argument
+        Product.objects.filter(inventory_id=inventory_id).delete()
         return Response(status=status.HTTP_200_OK)
 
 
@@ -48,7 +47,7 @@ class ProductViewSet(viewsets.ModelViewSet):
         """Set the user as owner"""
         serializer.save(user=self.request.user)
 
-    def destroy(self, request, pk=None):
+    def destroy(self, request, pk=None):  # pylint: disable=unused-argument
         product = None
         try:
             product = Product.objects.get(pk=int(pk))
