@@ -124,6 +124,10 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(ROOT_DIR, 'static')
 STATIC_URL = '/static/'
 
+FIXTURE_DIRS = [
+    os.path.join(ROOT_DIR, 'fixtures'),
+]
+
 # Django Rest Framework
 
 REST_FRAMEWORK = {

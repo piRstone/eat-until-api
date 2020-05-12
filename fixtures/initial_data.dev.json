@@ -1,0 +1,44 @@
+[
+  {
+    "model": "accounts.user",
+    "pk": 1,
+    "fields": {
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "john.doe@email.com",
+      "is_superuser": false,
+      "is_active": true
+    }
+  },
+  {
+    "model": "accounts.user",
+    "pk": 2,
+    "fields": {
+      "first_name": "Paul",
+      "last_name": "Simons",
+      "email": "psimons@email.com",
+      "is_superuser": false,
+      "is_active": false
+    }
+  },
+  {
+    "model": "inventories.inventory",
+    "pk": 1,
+    "fields": {
+      "created": "2020-04-19 19:19:03.739142+02",
+      "modified": "2020-04-19 19:19:03.739142+02",
+      "name": "Fridge",
+      "user": 1
+    }
+  },
+  {
+    "model": "inventories.inventory",
+    "pk": 2,
+    "fields": {
+      "created": "2020-04-19 19:19:03.739142+02",
+      "modified": "2020-04-19 19:19:03.739142+02",
+      "name": "Freezer",
+      "user": 1
+    }
+  }
+]
