@@ -1,6 +1,9 @@
 from django.contrib import admin
+from django.contrib.auth.views import (PasswordResetView, PasswordResetConfirmView,
+                                       PasswordResetDoneView, PasswordResetCompleteView)
 from django.conf import settings
 from django.conf.urls import url, include
+from django.urls import path
 
 from rest_framework.routers import DefaultRouter
 from rest_framework.permissions import AllowAny
@@ -15,7 +18,6 @@ from drf_yasg.views import get_schema_view
 from accounts.views import (
     CreateUserAPIView,
     UserViewSet)
-
 from inventories.views import InventoryViewSet, ProductViewSet
 
 
@@ -33,16 +35,23 @@ api_urls += [
 ]
 
 urlpatterns = [
+    path('reset-password/', PasswordResetView.as_view(), name='password_reset'),
+    path('reset-password/done/', PasswordResetDoneView.as_view(), name='password_reset_done'),
+    path('accounts/reset/<uidb64>/<token>/',
+         PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+    path('reset-password/complete/', PasswordResetCompleteView.as_view(),
+         name='password_reset_complete'),
+
     url(r'admin/', admin.site.urls),
     url(r'api/', include((api_urls, 'api'), namespace='api'))
 ]
 
 if settings.DEBUG:
-    # import debug_toolbar
+    import debug_toolbar
 
     schema_view = get_schema_view(
         openapi.Info(
-            title="Eat Until API",
+            title='Eat Until API',
             default_version='v1',
         ),
         public=False,  # Even if we include doc only for dev, still force user login
@@ -50,10 +59,10 @@ if settings.DEBUG:
     )
 
     urlpatterns += [
-        # path('__debug__/', include(debug_toolbar.urls)),  # For admin views
 
         url(r'drf/', include('rest_framework.urls', namespace='rest_framework')),
         url(r'swagger/', schema_view.with_ui('swagger'), name='schema-swagger-ui'),
+        path('__debug__/', include(debug_toolbar.urls)),  # For admin views
     ]
 
 admin.site.site_title = 'Eat Until Administration'

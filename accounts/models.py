@@ -179,9 +179,12 @@ class User(AbstractBaseUser, PermissionsMixin):
                 'An error occured while sending an activation link to %(user)s' % {'user': self}))
 
     def send_reset_password_link(self):
+        base_url = settings.PROJECT_BASE_URL
+        uidb64 = uidb64_encode(self.pk)
         token = self.token_generator.make_token(self)
+        url = base_url + '/accounts/reset/{}/{}'.format(uidb64, token)
         context = {
-            'reset_password_link': self._get_frontend_link_token(token, 'reset-password'),
+            'reset_password_link': url,
         }
         success = self.send_user_email(
             subject_tmpl='reset-password/reset_password_link_subject.txt',
