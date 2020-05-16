@@ -22,4 +22,4 @@ build:
         name: Unit Tests
         code: |
             python -m coverage.__main__ run manage.py test
-            python -m coverage.__main__ html --fail-under=70
+            python -m coverage.__main__ report --fail-under=70
