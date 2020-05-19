@@ -1,3 +1,4 @@
+from django.views.generic import TemplateView
 from django.http import Http404
 
 from rest_framework import status, permissions, viewsets
@@ -19,6 +20,7 @@ from .serializers import (
     ResetPasswordSerializer)
 from .permissions import isOwnerOrAdmin
 from .models import User
+from .utils import uidb64_decode
 
 
 def jwt_response_payload_handler(token, user=None, request=None):
@@ -29,6 +31,22 @@ def jwt_response_payload_handler(token, user=None, request=None):
         'token': token,
         'user': UserSerializer(user, context={'request': request}).data
     }
+
+
+class ActivateUserView(TemplateView):
+    template_name = 'activation/activation_error.html'
+
+    def get(self, request, *args, **kwargs):
+        if (request.GET.get('uid') and request.GET.get('token')):
+            try:
+                user = User.objects.get(pk=uidb64_decode(request.GET.get('uid')))
+                if User.token_generator.check_token(user, request.GET.get('token')):
+                    self.template_name = 'activation/activation.html'
+                    user.is_active = True
+                    user.save()
+            except User.DoesNotExist:
+                pass
+        return super().get(request, *args, **kwargs)
 
 
 class CreateUserAPIView(CreateAPIView):

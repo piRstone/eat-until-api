@@ -5,6 +5,8 @@ from django.urls import reverse
 from rest_framework.test import APITestCase
 
 from .factories import UserFactory
+from .models import User
+from .utils import uidb64_encode
 
 
 class AccountsTestCase(TestCase):
@@ -26,6 +28,7 @@ class AccountsAPITestCase(APITestCase):
         cls.refresh_url = reverse('api:token-refresh')
         cls.verify_url = reverse('api:token-verify')
         cls.register_url = reverse('api:register')
+        cls.activation_url = reverse('activate_user')
 
     def test_can_create_token(self):
         """An anonymous user can create an access token with valid credentials"""
@@ -120,3 +123,20 @@ class AccountsAPITestCase(APITestCase):
 
         self.assertEqual(response.status_code, 400)
         self.assertIn('email', response.data)
+
+    def test_user_activation(self):
+        """
+        given a not activated user
+        when he GET the activation page with the url given by mail
+        then he is activated
+        """
+        user = UserFactory.create(is_active=False)
+        self.assertFalse(user.is_active)
+        token = user.token_generator.make_token(user)
+        response = self.client.get(self.activation_url, {
+            'uid': uidb64_encode(user.pk),
+            'token': token
+        })
+        user = User.objects.get(pk=user.pk)
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(user.is_active)

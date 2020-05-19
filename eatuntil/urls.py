@@ -17,7 +17,8 @@ from drf_yasg.views import get_schema_view
 
 from accounts.views import (
     CreateUserAPIView,
-    UserViewSet)
+    UserViewSet,
+    ActivateUserView)
 from inventories.views import InventoryViewSet, ProductViewSet
 
 
@@ -41,7 +42,7 @@ urlpatterns = [
          PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('reset-password/complete/', PasswordResetCompleteView.as_view(),
          name='password_reset_complete'),
-
+    path('activation/', ActivateUserView.as_view(), name='activate_user'),
     url(r'admin/', admin.site.urls),
     url(r'api/', include((api_urls, 'api'), namespace='api'))
 ]
