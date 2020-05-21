@@ -2,7 +2,7 @@ from .base import *
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['eatuntil.pirstone.com']
+ALLOWED_HOSTS = ['.pirstone.com']
 
 INTERNAL_IPS = ('127.0.0.1',)
 
