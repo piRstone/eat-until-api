@@ -1,4 +1,4 @@
-from datetime import date, timedelta
+from datetime import date
 
 from django.core.management.base import BaseCommand
 
@@ -12,9 +12,9 @@ class Command(BaseCommand):
         users = User.objects.all()
 
         for user in users:
-            default_date = date.today() + timedelta(days=3)
+            default_date = date.today()
             products = user.products.filter(
-                expiration_date__lte=default_date).order_by('expiration_date')
+                notification_date=default_date).order_by('expiration_date')
 
             print('{} : {} produits périment aujourd\'hui'.format(user.email, len(products)))
 

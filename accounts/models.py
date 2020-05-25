@@ -201,3 +201,8 @@ class User(AbstractBaseUser, PermissionsMixin):
                 'to %(user)s' % {'user': self}
             )
             raise Exception(exception_message)
+
+    def save(self, *args, **kwargs):
+        if not self.normalized_email:
+            self.normalized_email = self.email.lower()
+        super().save(*args, **kwargs)
