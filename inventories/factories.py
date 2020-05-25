@@ -10,5 +10,5 @@ class InventoryFactory(factory.DjangoModelFactory):
     class Meta:
         model = Inventory
 
-    name = "My list"
-    user = factory.Subfactory(UserFactory)
+    name = 'My list'
+    user = factory.SubFactory(UserFactory)

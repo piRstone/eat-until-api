@@ -25,7 +25,7 @@ except ImportError:
     pass
 
 sentry_sdk.init(
-    dsn=SENTRY_URL,
+    dsn=SENTRY_URL,  # pylint: disable=undefined-variable
     integrations=[DjangoIntegration()],
 
     # If you wish to associate users to errors (assuming you are using
