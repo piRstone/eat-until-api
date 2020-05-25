@@ -162,7 +162,7 @@ PROTECTED_UPLOADS_ROOT = os.path.join(ROOT_DIR, 'private')
 PROTECTED_UPLOADS_URL = 'private'
 
 PROJECT_NAME = 'Eat Until'
-PROJECT_BASE_URL = None
+PROJECT_BASE_URL = 'https://eatuntil.pirstone.com'
 PROJECT_EMAIL = 'eatuntil@pirstone.com'
 PROJECT_WEBSITE = 'eatuntil.pirstone.com'
 PROJECT_LOGO = 'logo.png'
