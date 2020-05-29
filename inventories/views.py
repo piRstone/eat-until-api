@@ -20,7 +20,7 @@ class InventoryViewSet(viewsets.ModelViewSet):
         """Set the user as owner"""
         serializer.save(user=self.request.user)
 
-    @action(methods=['post'], detail=False, url_path=r'(?P<id>\d+)/clear_products',
+    @action(methods=['post'], detail=False, url_path=r'(?P<inventory_id>\d+)/clear_products',
             permission_classes=[permissions.IsAuthenticated])
     def clear_products(self, request, inventory_id, *args, **kwargs):  # pylint: disable=unused-argument
         Product.objects.filter(inventory_id=inventory_id).delete()
