@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-02 10:11+0200\n"
+"POT-Creation-Date: 2020-06-02 10:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,23 +98,57 @@ msgstr ""
 msgid "Go back to the application and ask a new activation link."
 msgstr ""
 
+#: templates/activation/activation_link_body.html:67
+msgid "Welcome!"
+msgstr ""
+
 #: templates/activation/activation_link_body.html:79
 msgid ""
 "\n"
-"                                            Votre compte a bien été créé !\n"
-"                                            Activez votre compte en cliquant "
-"sur le lien d'activation ci-dessous :\n"
+"                                            Your account has been "
+"successfully created!\n"
+"                                            Activate it by clicking the link "
+"below:\n"
 "                                            "
 msgstr ""
 
 #: templates/activation/activation_link_body.html:111
-msgid ""
-"\n"
-"                                          Activer mon compte\n"
-"                                          "
+msgid "Activate my account"
 msgstr ""
 
-#: templates/activation/activation_link_body.html:130
+#: templates/activation/activation_link_body.html:128
+#, python-format
+msgid "%(project_name)s team"
+msgstr ""
+
+#: templates/activation/activation_link_body.html:148
+#, python-format
+msgid ""
+"\n"
+"                                    The button doesn't work? Paste this link "
+"in your browser: <a href=\"%(activation_link)s\">%(activation_link)s</a>\n"
+"                                    "
+msgstr ""
+
+#: templates/activation/activation_link_body.txt:2
+msgid "Welcome to {{ project_name }}!"
+msgstr ""
+
+#: templates/activation/activation_link_body.txt:4
+msgid ""
+"\n"
+"Your account has been successfully created!\n"
+"Activate it by clicking the link below:\n"
+msgstr ""
+
+#: templates/activation/activation_link_body.txt:11
+msgid "{{ project_name }} team"
+msgstr ""
+
+#: templates/activation/activation_link_subject.txt:2
+msgid "Account activation"
+msgstr ""
+
 #: templates/products_expiration_notification/body.html:146
 #: templates/reset-password/reset_password_link_body.html:135
 #, python-format
@@ -122,35 +156,6 @@ msgid ""
 "\n"
 "                                          L'équipe %(project_name)s\n"
 "                                          "
-msgstr ""
-
-#: templates/activation/activation_link_body.html:152
-#, python-format
-msgid ""
-"\n"
-"                                    Le bouton ne fonctionne pas ? Collez ce "
-"lien dans votre navigateur : <a href=\"%(activation_link)s\">"
-"%(activation_link)s</a>\n"
-"                                    "
-msgstr ""
-
-#: templates/activation/activation_link_body.txt:2
-#, python-format
-msgid ""
-"\n"
-"Bienvenue sur %(project_name)s !\n"
-"\n"
-"Votre compte a bien été créé ! Activez votre compte en cliquant sur le lien "
-"d'activation ci-dessous :\n"
-"\n"
-"%(activation_link)s\n"
-"\n"
-"L'équipe %(project_name)s\n"
-msgstr ""
-
-#: templates/activation/activation_link_subject.txt:2
-#, python-format
-msgid "%(project_name)s - Activation de votre compte"
 msgstr ""
 
 #: templates/products_expiration_notification/body.txt:2

@@ -1,5 +1,5 @@
 {% load i18n %}{% autoescape off %}
-{% trans "Welcome to {{ project_name }}!" %}
+{% blocktrans %}Welcome to {{ project_name }}!{% endblocktrans %}
 
 {% blocktrans %}
 Your account has been successfully created!
@@ -8,5 +8,5 @@ Activate it by clicking the link below:
 
 {{ activation_link }}
 
-{% trans "{{ project_name }} team" %}
+{% blocktrans %}{{ project_name }} team{% endblocktrans %}
 {% endautoescape %}

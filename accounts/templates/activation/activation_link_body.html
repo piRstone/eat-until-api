@@ -52,6 +52,22 @@
                 <td class="w600" width="600px" height="20px"></td>
               </tr>
               <tr>
+                <td class="w600" width="600">
+                  <table class="w600" width="600" border="0" cellspacing="0" cellpadding="0">
+                    <tbody>
+                      <tr>
+                        <td align="center">
+                          <img src="{{ project_logo }}" alt="Eat Until Logo" height="200" />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td class="w600" width="600px" height="20px"></td>
+              </tr>
+              <tr>
                 <td class="w600" width="600" align="left" style="background-color: #FFFFFF; border-radius:20px;">
                   <table class="w600" width="600" border="0" cellspacing="0" cellpadding="0">
                     <tbody>
@@ -125,7 +141,7 @@
                                     <tr>
                                       <td>
                                         <p style="font-style: italic;">
-                                          {% trans "{{ project_name }} team" %}
+                                          {% blocktrans %}{{ project_name }} team{% endblocktrans %}
                                         </p>
                                       </td>
                                     </tr>

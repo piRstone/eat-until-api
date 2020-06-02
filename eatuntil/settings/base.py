@@ -165,7 +165,7 @@ PROJECT_NAME = 'Eat Until'
 PROJECT_BASE_URL = 'https://eatuntil.pirstone.com'
 PROJECT_EMAIL = 'eatuntil@pirstone.com'
 PROJECT_WEBSITE = 'eatuntil.pirstone.com'
-PROJECT_LOGO = 'logo.png'
+PROJECT_LOGO = 'img/logo-full.png'
 
 # Sorl thumbnail
 
