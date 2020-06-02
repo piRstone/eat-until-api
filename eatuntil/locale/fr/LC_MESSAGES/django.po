@@ -7,150 +7,192 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-15 12:15+0200\n"
+"POT-Creation-Date: 2020-06-02 10:25+0200\n"
 "PO-Revision-Date: 2020-05-15 12:17+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Last-Translator: \n"
-"Language-Team: \n"
 "X-Generator: Poedit 2.3\n"
 
-#: accounts/models.py:68
+#: models.py:68
 msgid "First name"
 msgstr "Prénom"
 
-#: accounts/models.py:70
+#: models.py:70
 msgid "Last name"
 msgstr "Nom"
 
-#: accounts/models.py:75
+#: models.py:75
+#, fuzzy
+#| msgid "Email address:"
 msgid "email address"
-msgstr ""
+msgstr "Adresse email"
 
-#: accounts/models.py:79
+#: models.py:79
+#, fuzzy
+#| msgid "Email address:"
 msgid "normalized email address"
-msgstr ""
+msgstr "Adresse email"
 
-#: accounts/models.py:85
+#: models.py:85
 msgid "avatar"
-msgstr ""
+msgstr "Avatar"
 
-#: accounts/models.py:91
+#: models.py:91
 msgid "active"
-msgstr ""
+msgstr "Est actif"
 
-#: accounts/models.py:95
+#: models.py:95
 msgid "staff status"
 msgstr ""
 
-#: accounts/models.py:121
+#: models.py:121
 #, python-format
 msgid "No email send to user \"%(user)s\" because he has no email."
 msgstr ""
 
-#: accounts/models.py:179
+#: models.py:179
 #, python-format
 msgid "An error occured while sending an activation link to %(user)s"
-msgstr ""
+msgstr "Une erreur s'est produite pendant l'envoi du lien d'activation à %(user)s"
 
-#: accounts/models.py:197
+#: models.py:200
 #, python-format
 msgid "An error occured while sending an reset password link to %(user)s"
-msgstr ""
+msgstr "Une erreur s'est produite pendant l'envoi du lien de réinitialisation de mot de passe à %(user)s"
 
-#: accounts/serializers.py:38 accounts/serializers.py:71
+#: serializers.py:38 serializers.py:71
 msgid "That email is already associated to an account"
-msgstr ""
+msgstr "Cette adresse email est déjà liée à un autre compte"
 
-#: accounts/serializers.py:85 accounts/serializers.py:87
+#: serializers.py:85 serializers.py:87
 msgid "An error occured"
-msgstr ""
+msgstr "Une erreur s'est produite"
 
-#: accounts/serializers.py:92
+#: serializers.py:92
 msgid "This link has expired. Please ask for a new one."
-msgstr ""
+msgstr "Le lien a expiré. Merci d'en demander un nouveau"
 
-#: accounts/serializers.py:106
+#: serializers.py:106
 msgid "Password don't match."
-msgstr ""
+msgstr "Les mots de passe ne correspondent pas"
 
-#: accounts/templates/activation/activation_link_body.html:79
+#: templates/activation/activation.html:6
+msgid "Your account has been successfully activated."
+msgstr "Votre compte a bien été activé."
+
+#: templates/activation/activation.html:7
+msgid "You can now get back to Eat Until to log you in."
+msgstr "Vous pouvez retourner sur l'application pour vous connecter."
+
+#: templates/activation/activation.html:9
+#: templates/activation/activation_error.html:9
+msgid "Open Eat Until"
+msgstr "Ouvrir Eat Until"
+
+#: templates/activation/activation_error.html:6
+msgid "This link seems to be expired."
+msgstr "Le lien semble être expiré."
+
+#: templates/activation/activation_error.html:7
+msgid "Go back to the application and ask a new activation link."
+msgstr "Retournez sur l'application pour demander un nouveau lien d'activation."
+
+#: templates/activation/activation_link_body.html:67
+msgid "Welcome!"
+msgstr "Bienvenue !"
+
+#: templates/activation/activation_link_body.html:79
 msgid ""
 "\n"
-"                                            Votre compte a bien été créé !\n"
-"                                            Activez votre compte en cliquant "
-"sur le lien d'activation ci-dessous :\n"
+"                                            Your account has been "
+"successfully created!\n"
+"                                            Activate it by clicking the link "
+"below:\n"
 "                                            "
 msgstr ""
+"\n"
+"                                            Votre compte a bien été "
+"créé!\n"
+"                                            Activez-le en cliquant sur le lien "
+"ci-dessous:\n"
+"                                            "
 
-#: accounts/templates/activation/activation_link_body.html:111
+#: templates/activation/activation_link_body.html:111
+msgid "Activate my account"
+msgstr "Activer mon compte"
+
+#: templates/activation/activation_link_body.html:128
+#: templates/activation/activation_link_body.txt:11
+msgid "{{ project_name }} team"
+msgstr "L'équipe {{ project_name }}"
+
+#: templates/activation/activation_link_body.html:148
+#, python-format
 msgid ""
 "\n"
-"                                          Activer mon compte\n"
-"                                          "
+"                                    The button doesn't work? Paste this link "
+"in your browser: <a href=\"%(activation_link)s\">%(activation_link)s</a>\n"
+"                                    "
 msgstr ""
+"\n"
+"                                    Le bouton ne fonctionne pas ? Colle ce lien "
+"dans votre navigateur: <a href=\"%(activation_link)s\">%(activation_link)s</a>\n"
+"                                    "
 
-#: accounts/templates/activation/activation_link_body.html:130
-#: accounts/templates/products_expiration_notification/body.html:146
-#: accounts/templates/reset-password/reset_password_link_body.html:135
+#: templates/activation/activation_link_body.txt:2
+msgid "Welcome to {{ project_name }}!"
+msgstr "Bienvenue sur {{ project_name }} !"
+
+#: templates/activation/activation_link_body.txt:4
+msgid ""
+"\n"
+"Your account has been successfully created!\n"
+"Activate it by clicking the link below:\n"
+msgstr ""
+"\n"
+"Votre compte a bien été créé !\n"
+"Activez-le en cliquant sur le lien ci-dessous :\n"
+
+#: templates/activation/activation_link_subject.txt:2
+msgid "Account activation"
+msgstr "Activer mon compte"
+
+#: templates/products_expiration_notification/body.html:146
+#: templates/reset-password/reset_password_link_body.html:135
 #, python-format
 msgid ""
 "\n"
 "                                          L'équipe %(project_name)s\n"
 "                                          "
 msgstr ""
+"\n"
+"                                          L'équipe %(project_name)s\n"
+"                                          "
 
-#: accounts/templates/activation/activation_link_body.html:152
-#, python-format
-msgid ""
-"\n"
-"                                    Le bouton ne fonctionne pas ? Collez ce "
-"lien dans votre navigateur : <a href=\"%(activation_link)s\">"
-"%(activation_link)s</a>\n"
-"                                    "
-msgstr ""
-
-#: accounts/templates/activation/activation_link_body.txt:2
-#, python-format
-msgid ""
-"\n"
-"Bienvenue sur %(project_name)s !\n"
-"\n"
-"Votre compte a bien été créé ! Activez votre compte en cliquant sur le lien "
-"d'activation ci-dessous :\n"
-"\n"
-"%(activation_link)s\n"
-"\n"
-"L'équipe %(project_name)s\n"
-msgstr ""
-
-#: accounts/templates/activation/activation_link_subject.txt:2
-#, python-format
-msgid "%(project_name)s - Activation de votre compte"
-msgstr ""
-
-#: accounts/templates/products_expiration_notification/body.txt:2
+#: templates/products_expiration_notification/body.txt:2
 #, python-format
 msgid ""
 "\n"
 "%(count)s produits arrivent à expiration\n"
 msgstr ""
 
-#: accounts/templates/products_expiration_notification/body.txt:10
+#: templates/products_expiration_notification/body.txt:10
 #, python-format
 msgid ""
 "\n"
 "L'équipe %(project_name)s\n"
 msgstr ""
 
-#: accounts/templates/products_expiration_notification/subject.txt:2
+#: templates/products_expiration_notification/subject.txt:2
 msgid "Des produits arrivent à expiration"
 msgstr ""
 
-#: accounts/templates/reset-password/reset_password_link_body.html:79
+#: templates/reset-password/reset_password_link_body.html:79
 msgid ""
 "\n"
 "                                            Vous avez demandé à "
@@ -160,14 +202,14 @@ msgid ""
 "                                            "
 msgstr ""
 
-#: accounts/templates/reset-password/reset_password_link_body.html:111
+#: templates/reset-password/reset_password_link_body.html:111
 msgid ""
 "\n"
 "                                          Réinitialiser mon mot de passe\n"
 "                                          "
 msgstr ""
 
-#: accounts/templates/reset-password/reset_password_link_body.html:130
+#: templates/reset-password/reset_password_link_body.html:130
 msgid ""
 "\n"
 "                                          Si vous n'êtes pas à l'origine de "
@@ -175,7 +217,7 @@ msgid ""
 "                                          "
 msgstr ""
 
-#: accounts/templates/reset-password/reset_password_link_body.html:157
+#: templates/reset-password/reset_password_link_body.html:157
 #, python-format
 msgid ""
 "\n"
@@ -185,7 +227,7 @@ msgid ""
 "                                    "
 msgstr ""
 
-#: accounts/templates/reset-password/reset_password_link_body.txt:2
+#: templates/reset-password/reset_password_link_body.txt:2
 #, python-format
 msgid ""
 "\n"
@@ -202,105 +244,69 @@ msgid ""
 "L'équipe %(project_name)s\n"
 msgstr ""
 
-#: accounts/templates/reset-password/reset_password_link_subject.txt:2
+#: templates/reset-password/reset_password_link_subject.txt:2
 #, python-format
 msgid "%(project_name)s - Réinitialisation du mot de passe"
 msgstr ""
 
-#: eatuntil/commons/models.py:11
 msgid "created"
-msgstr ""
+msgstr "Créé le"
 
-#: eatuntil/commons/models.py:17
 msgid "modified"
-msgstr ""
+msgstr "Modifié le"
 
-#: eatuntil/templates/activation.html:3
-msgid "Activation"
-msgstr ""
-
-#: eatuntil/templates/activation.html:6
-msgid "Account activation"
-msgstr ""
-
-#: eatuntil/templates/activation.html:9
-msgid "Your account has been activated."
-msgstr ""
-
-#: eatuntil/templates/registration/password_reset_complete.html:9
 msgid "Your password has been set. You may go ahead and log in now."
 msgstr ""
+"Votre mot de passe a été enregistré. Vous pouvez vous connecter dès "
+"maintenant."
 
-#: eatuntil/templates/registration/password_reset_confirm.html:10
+msgid "Go to application"
+msgstr "Retourner sur l'application"
+
 msgid ""
 "Please enter your new password twice so we can verify you typed it in "
 "correctly."
 msgstr ""
+"Saisissez votre mot de passe 2 fois afin de vérifier qu'ils soient "
+"identiques."
 
-#: eatuntil/templates/registration/password_reset_confirm.html:16
 msgid "New password:"
-msgstr ""
+msgstr "Nouveau mot de passe"
 
-#: eatuntil/templates/registration/password_reset_confirm.html:21
 msgid "Confirm password:"
-msgstr ""
+msgstr "Confirmation du mot de passe"
 
-#: eatuntil/templates/registration/password_reset_confirm.html:24
 msgid "Change my password"
-msgstr ""
+msgstr "Modifier mon mot de passe"
 
-#: eatuntil/templates/registration/password_reset_confirm.html:30
 msgid ""
 "The password reset link was invalid, possibly because it has already been "
 "used. Please request a new password reset."
 msgstr ""
+"Le lien de réinitialisation du mot de passe est invalide car il a déjà "
+"été utilisé. Merci de refaire une demande depuis l'application."
 
-#: eatuntil/templates/registration/password_reset_done.html:9
 msgid ""
 "We've emailed you instructions for setting your password, if an account "
 "exists with the email you entered. You should receive them shortly."
 msgstr ""
+"Si un compte y est à attaché, vous recevrez sous peu les instructions "
+"pour réinitialiser votre mot de passe à l'adresse email renseignée."
 
-#: eatuntil/templates/registration/password_reset_done.html:11
 msgid ""
-"If you don't receive an email, please make sure you've entered the address "
-"you registered with, and check your spam folder."
+"If you don't receive an email, please make sure you've entered the "
+"address you registered with, and check your spam folder."
 msgstr ""
+"Si vous ne recevez pas d'email, assurez vous d'avoir saisi l'adresse avec "
+"laquelle vous vous êtes inscrit sur l'application. Vérifiez également "
+"dans vos spams.'"
 
-#: eatuntil/templates/registration/password_reset_form.html:8
 msgid ""
 "Forgotten your password? Enter your email address below, and we'll email "
 "instructions for setting a new one."
 msgstr ""
+"Vous avez oublié votre mot de passe ? Saisissez votre adresse email ci-"
+"dessous et nous vous enverrons les instructions pour le modifier."
 
-#: eatuntil/templates/registration/password_reset_form.html:14
-msgid "Email address:"
-msgstr ""
-
-#: eatuntil/templates/registration/password_reset_form.html:17
 msgid "Reset my password"
-msgstr ""
-
-#: eatuntil/views.py:20 eatuntil/views.py:28 eatuntil/views.py:32
-msgid "This link is invalid."
-msgstr ""
-
-#: inventories/models/inventory.py:25 inventories/models/product.py:27
-msgid "owner"
-msgstr ""
-
-#: inventories/models/product.py:14
-msgid "expiration date"
-msgstr ""
-
-#: inventories/models/product.py:17
-msgid "notification delay"
-msgstr ""
-
-#: inventories/models/product.py:20
-msgid "inventory"
-msgstr ""
-
-#: inventories/models/product.py:22
-msgid "Code-barre ean13"
-msgstr ""
+msgstr "Réinitialiser mon mot de passe"

@@ -1,2 +1,2 @@
 {% load i18n %}
-{% blocktrans %}{{ project_name }} - Activation de votre compte{% endblocktrans %}
+{{ project_name }} - {% trans "Account activation" %}

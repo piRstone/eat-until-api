@@ -1,0 +1,229 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-06-02 10:11+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: models.py:68
+msgid "First name"
+msgstr ""
+
+#: models.py:70
+msgid "Last name"
+msgstr ""
+
+#: models.py:75
+msgid "email address"
+msgstr ""
+
+#: models.py:79
+msgid "normalized email address"
+msgstr ""
+
+#: models.py:85
+msgid "avatar"
+msgstr ""
+
+#: models.py:91
+msgid "active"
+msgstr ""
+
+#: models.py:95
+msgid "staff status"
+msgstr ""
+
+#: models.py:121
+#, python-format
+msgid "No email send to user \"%(user)s\" because he has no email."
+msgstr ""
+
+#: models.py:179
+#, python-format
+msgid "An error occured while sending an activation link to %(user)s"
+msgstr ""
+
+#: models.py:200
+#, python-format
+msgid "An error occured while sending an reset password link to %(user)s"
+msgstr ""
+
+#: serializers.py:38 serializers.py:71
+msgid "That email is already associated to an account"
+msgstr ""
+
+#: serializers.py:85 serializers.py:87
+msgid "An error occured"
+msgstr ""
+
+#: serializers.py:92
+msgid "This link has expired. Please ask for a new one."
+msgstr ""
+
+#: serializers.py:106
+msgid "Password don't match."
+msgstr ""
+
+#: templates/activation/activation.html:6
+msgid "Your account has been successfully activated."
+msgstr ""
+
+#: templates/activation/activation.html:7
+msgid "You can now get back to Eat Until to log you in."
+msgstr ""
+
+#: templates/activation/activation.html:9
+#: templates/activation/activation_error.html:9
+msgid "Open Eat Until"
+msgstr ""
+
+#: templates/activation/activation_error.html:6
+msgid "This link seems to be expired."
+msgstr ""
+
+#: templates/activation/activation_error.html:7
+msgid "Go back to the application and ask a new activation link."
+msgstr ""
+
+#: templates/activation/activation_link_body.html:79
+msgid ""
+"\n"
+"                                            Votre compte a bien été créé !\n"
+"                                            Activez votre compte en cliquant "
+"sur le lien d'activation ci-dessous :\n"
+"                                            "
+msgstr ""
+
+#: templates/activation/activation_link_body.html:111
+msgid ""
+"\n"
+"                                          Activer mon compte\n"
+"                                          "
+msgstr ""
+
+#: templates/activation/activation_link_body.html:130
+#: templates/products_expiration_notification/body.html:146
+#: templates/reset-password/reset_password_link_body.html:135
+#, python-format
+msgid ""
+"\n"
+"                                          L'équipe %(project_name)s\n"
+"                                          "
+msgstr ""
+
+#: templates/activation/activation_link_body.html:152
+#, python-format
+msgid ""
+"\n"
+"                                    Le bouton ne fonctionne pas ? Collez ce "
+"lien dans votre navigateur : <a href=\"%(activation_link)s\">"
+"%(activation_link)s</a>\n"
+"                                    "
+msgstr ""
+
+#: templates/activation/activation_link_body.txt:2
+#, python-format
+msgid ""
+"\n"
+"Bienvenue sur %(project_name)s !\n"
+"\n"
+"Votre compte a bien été créé ! Activez votre compte en cliquant sur le lien "
+"d'activation ci-dessous :\n"
+"\n"
+"%(activation_link)s\n"
+"\n"
+"L'équipe %(project_name)s\n"
+msgstr ""
+
+#: templates/activation/activation_link_subject.txt:2
+#, python-format
+msgid "%(project_name)s - Activation de votre compte"
+msgstr ""
+
+#: templates/products_expiration_notification/body.txt:2
+#, python-format
+msgid ""
+"\n"
+"%(count)s produits arrivent à expiration\n"
+msgstr ""
+
+#: templates/products_expiration_notification/body.txt:10
+#, python-format
+msgid ""
+"\n"
+"L'équipe %(project_name)s\n"
+msgstr ""
+
+#: templates/products_expiration_notification/subject.txt:2
+msgid "Des produits arrivent à expiration"
+msgstr ""
+
+#: templates/reset-password/reset_password_link_body.html:79
+msgid ""
+"\n"
+"                                            Vous avez demandé à "
+"réinitialiser votre mot de passe.\n"
+"                                            Cliquez sur le lien ci-dessous "
+"pour le changer :\n"
+"                                            "
+msgstr ""
+
+#: templates/reset-password/reset_password_link_body.html:111
+msgid ""
+"\n"
+"                                          Réinitialiser mon mot de passe\n"
+"                                          "
+msgstr ""
+
+#: templates/reset-password/reset_password_link_body.html:130
+msgid ""
+"\n"
+"                                          Si vous n'êtes pas à l'origine de "
+"cette demande, vous pouvez ignorer ce message.\n"
+"                                          "
+msgstr ""
+
+#: templates/reset-password/reset_password_link_body.html:157
+#, python-format
+msgid ""
+"\n"
+"                                    Le bouton ne fonctionne pas ? Collez ce "
+"lien dans votre navigateur : <a href=\"%(reset_password_link)s\">"
+"%(reset_password_link)s</a>\n"
+"                                    "
+msgstr ""
+
+#: templates/reset-password/reset_password_link_body.txt:2
+#, python-format
+msgid ""
+"\n"
+"Bonjour,\n"
+"\n"
+"Vous avez demandé à réinitialiser votre mot de passe. Cliquez sur le lien ci-"
+"dessous pour le changer :\n"
+"\n"
+"%(reset_password_link)s\n"
+"\n"
+"Si vous n'êtes pas à l'origine de cette demande, vous pouvez ignorer ce "
+"message.\n"
+"\n"
+"L'équipe %(project_name)s\n"
+msgstr ""
+
+#: templates/reset-password/reset_password_link_subject.txt:2
+#, python-format
+msgid "%(project_name)s - Réinitialisation du mot de passe"
+msgstr ""

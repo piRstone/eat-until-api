@@ -64,7 +64,7 @@
                             <tr>
                               <td class="w20" width="20"></td>
                               <td class="w560" width="560" align="center">
-                                <h1>Bienvenue !</h1>
+                                <h1>{% trans "Welcome!" %}</h1>
                               </td>
                               <td class="w20" width="20"></td>
                             </tr>
@@ -77,8 +77,8 @@
                                       <td>
                                           <p>
                                             {% blocktrans %}
-                                            Votre compte a bien été créé !
-                                            Activez votre compte en cliquant sur le lien d'activation ci-dessous :
+                                            Your account has been successfully created!
+                                            Activate it by clicking the link below:
                                             {% endblocktrans %}
                                           </p>
                                       </td>
@@ -108,9 +108,7 @@
                                             font-weight: bold;
                                             line-height: 45px;
                                             box-shadow: 0 5px 6px rgba(24, 216, 115, 0.3);">
-                                          {% blocktrans %}
-                                          Activer mon compte
-                                          {% endblocktrans %}
+                                          {% trans "Activate my account" %}
                                         </a>
                                       </td>
                                     </tr>
@@ -127,9 +125,7 @@
                                     <tr>
                                       <td>
                                         <p style="font-style: italic;">
-                                          {% blocktrans %}
-                                          L'équipe {{ project_name }}
-                                          {% endblocktrans %}
+                                          {% trans "{{ project_name }} team" %}
                                         </p>
                                       </td>
                                     </tr>
@@ -150,7 +146,7 @@
                                 <td class="w560" width="560">
                                   <p style="font-size: 12px; color: #555">
                                     {% blocktrans %}
-                                    Le bouton ne fonctionne pas ? Collez ce lien dans votre navigateur : <a href="{{ activation_link }}">{{ activation_link }}</a>
+                                    The button doesn't work? Paste this link in your browser: <a href="{{ activation_link }}">{{ activation_link }}</a>
                                     {% endblocktrans %}
                                   </p>
                                 </td>
