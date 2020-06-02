@@ -1,2 +1,2 @@
 {% load i18n %}
-{% blocktrans %}Some products expires soon{% endblocktrans %}
+Eat Until - {% blocktrans %}Some products expires soon{% endblocktrans %}
