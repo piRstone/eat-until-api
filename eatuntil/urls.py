@@ -20,6 +20,7 @@ from accounts.views import (
     UserViewSet,
     ActivateUserView)
 from inventories.views import InventoryViewSet, ProductViewSet
+from .views import HomeView, CGUView
 
 
 router = DefaultRouter(trailing_slash=False)
@@ -36,6 +37,8 @@ api_urls += [
 ]
 
 urlpatterns = [
+    path('', HomeView.as_view(), name='home'),
+    path('cgu', CGUView.as_view(), name='cgu'),
     path('reset-password/', PasswordResetView.as_view(), name='password_reset'),
     path('reset-password/done/', PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('accounts/reset/<uidb64>/<token>/',

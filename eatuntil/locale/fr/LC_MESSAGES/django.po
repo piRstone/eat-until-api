@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-02 12:09+0200\n"
-"PO-Revision-Date: 2020-06-02 12:07+0200\n"
+"POT-Creation-Date: 2020-08-20 17:13+0200\n"
+"PO-Revision-Date: 2020-08-20 17:15+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -16,231 +16,269 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.4.1\n"
 
-#: models.py:68
-msgid "First name"
-msgstr "Prénom"
+#: commons/models.py:11
+msgid "created"
+msgstr "Créé le"
 
-#: models.py:70
-msgid "Last name"
-msgstr "Nom"
+#: commons/models.py:17
+msgid "modified"
+msgstr "Modifié le"
 
-#: models.py:75
-msgid "email address"
+#: templates/home.html:10
+msgid "Welcome to Eat Until"
+msgstr "Bienvenue sur Eat Until"
+
+#: templates/registration/password_reset_complete.html:10
+msgid "Your password has been set. You may go ahead and log in now."
+msgstr ""
+"Votre mot de passe a été enregistré. Vous pouvez vous connecter dès "
+"maintenant."
+
+#: templates/registration/password_reset_complete.html:12
+msgid "Go to application"
+msgstr "Retourner sur l'application"
+
+#: templates/registration/password_reset_confirm.html:11
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+"Saisissez votre mot de passe 2 fois afin de vérifier qu'ils soient "
+"identiques."
+
+#: templates/registration/password_reset_confirm.html:18
+msgid "New password:"
+msgstr "Nouveau mot de passe"
+
+#: templates/registration/password_reset_confirm.html:24
+msgid "Confirm password:"
+msgstr "Confirmation du mot de passe"
+
+#: templates/registration/password_reset_confirm.html:29
+msgid "Change my password"
+msgstr "Modifier mon mot de passe"
+
+#: templates/registration/password_reset_confirm.html:36
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used. Please request a new password reset."
+msgstr ""
+"Le lien de réinitialisation du mot de passe est invalide car il a déjà été "
+"utilisé. Merci de refaire une demande depuis l'application."
+
+#: templates/registration/password_reset_done.html:9
+msgid ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+"Si un compte y est à attaché, vous recevrez sous peu les instructions pour "
+"réinitialiser votre mot de passe à l'adresse email renseignée."
+
+#: templates/registration/password_reset_done.html:11
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+"Si vous ne recevez pas d'email, assurez vous d'avoir saisi l'adresse avec "
+"laquelle vous vous êtes inscrit sur l'application. Vérifiez également dans "
+"vos spams.'"
+
+#: templates/registration/password_reset_form.html:8
+msgid ""
+"Forgotten your password? Enter your email address below, and we'll email "
+"instructions for setting a new one."
+msgstr ""
+"Vous avez oublié votre mot de passe ? Saisissez votre adresse email ci-"
+"dessous et nous vous enverrons les instructions pour le modifier."
+
+#: templates/registration/password_reset_form.html:14
+#, fuzzy
+#| msgid "email address"
+msgid "Email address:"
 msgstr "adresse email"
 
-#: models.py:79
-msgid "normalized email address"
-msgstr "adresse email normalisée"
+#: templates/registration/password_reset_form.html:17
+msgid "Reset my password"
+msgstr "Réinitialiser mon mot de passe"
 
-#: models.py:85
-msgid "avatar"
-msgstr "avatar"
+#~ msgid "First name"
+#~ msgstr "Prénom"
 
-#: models.py:91
-msgid "active"
-msgstr "est actif"
+#~ msgid "Last name"
+#~ msgstr "Nom"
 
-#: models.py:95
-msgid "staff status"
-msgstr "statut staff"
+#~ msgid "normalized email address"
+#~ msgstr "adresse email normalisée"
 
-#: models.py:121
+#~ msgid "avatar"
+#~ msgstr "avatar"
+
+#~ msgid "active"
+#~ msgstr "est actif"
+
+#~ msgid "staff status"
+#~ msgstr "statut staff"
+
 #, python-format
-msgid "No email send to user \"%(user)s\" because he has no email."
-msgstr ""
-"Email non envoyé à l’utilisateur %(user)s car il n’a pas d’adresse email."
+#~ msgid "No email send to user \"%(user)s\" because he has no email."
+#~ msgstr ""
+#~ "Email non envoyé à l’utilisateur %(user)s car il n’a pas d’adresse email."
 
-#: models.py:179
 #, python-format
-msgid "An error occured while sending an activation link to %(user)s"
-msgstr ""
-"Une erreur s'est produite pendant l'envoi du lien d'activation à %(user)s"
+#~ msgid "An error occured while sending an activation link to %(user)s"
+#~ msgstr ""
+#~ "Une erreur s'est produite pendant l'envoi du lien d'activation à %(user)s"
 
-#: models.py:200
 #, python-format
-msgid "An error occured while sending an reset password link to %(user)s"
-msgstr ""
-"Une erreur s'est produite pendant l'envoi du lien de réinitialisation de mot "
-"de passe à %(user)s"
+#~ msgid "An error occured while sending an reset password link to %(user)s"
+#~ msgstr ""
+#~ "Une erreur s'est produite pendant l'envoi du lien de réinitialisation de "
+#~ "mot de passe à %(user)s"
 
-#: serializers.py:38 serializers.py:71
-msgid "That email is already associated to an account"
-msgstr "Cette adresse email est déjà liée à un autre compte"
+#~ msgid "That email is already associated to an account"
+#~ msgstr "Cette adresse email est déjà liée à un autre compte"
 
-#: serializers.py:85 serializers.py:87
-msgid "An error occured"
-msgstr "Une erreur s'est produite"
+#~ msgid "An error occured"
+#~ msgstr "Une erreur s'est produite"
 
-#: serializers.py:92
-msgid "This link has expired. Please ask for a new one."
-msgstr "Le lien a expiré. Merci d'en demander un nouveau."
+#~ msgid "This link has expired. Please ask for a new one."
+#~ msgstr "Le lien a expiré. Merci d'en demander un nouveau."
 
-#: serializers.py:106
-msgid "Password don't match."
-msgstr "Les mots de passe ne correspondent pas."
+#~ msgid "Password don't match."
+#~ msgstr "Les mots de passe ne correspondent pas."
 
-#: templates/activation/activation.html:6
-msgid "Your account has been successfully activated."
-msgstr "Votre compte a bien été activé."
+#~ msgid "Your account has been successfully activated."
+#~ msgstr "Votre compte a bien été activé."
 
-#: templates/activation/activation.html:7
-msgid "You can now get back to Eat Until to log you in."
-msgstr "Vous pouvez retourner sur l'application pour vous connecter."
+#~ msgid "You can now get back to Eat Until to log you in."
+#~ msgstr "Vous pouvez retourner sur l'application pour vous connecter."
 
-#: templates/activation/activation.html:9
-#: templates/activation/activation_error.html:9
-msgid "Open Eat Until"
-msgstr "Ouvrir Eat Until"
+#~ msgid "This link seems to be expired."
+#~ msgstr "Le lien semble être expiré."
 
-#: templates/activation/activation_error.html:6
-msgid "This link seems to be expired."
-msgstr "Le lien semble être expiré."
+#~ msgid "Go back to the application and ask a new activation link."
+#~ msgstr ""
+#~ "Retournez sur l'application pour demander un nouveau lien d'activation."
 
-#: templates/activation/activation_error.html:7
-msgid "Go back to the application and ask a new activation link."
-msgstr ""
-"Retournez sur l'application pour demander un nouveau lien d'activation."
+#~ msgid "Welcome!"
+#~ msgstr "Bienvenue !"
 
-#: templates/activation/activation_link_body.html:83
-msgid "Welcome!"
-msgstr "Bienvenue !"
+#~ msgid ""
+#~ "\n"
+#~ "                                            Your account has been "
+#~ "successfully created!\n"
+#~ "                                            Activate it by clicking the "
+#~ "link below:\n"
+#~ "                                            "
+#~ msgstr ""
+#~ "\n"
+#~ "                                            Votre compte a bien été "
+#~ "créé!\n"
+#~ "                                            Activez-le en cliquant sur le "
+#~ "lien ci-dessous:\n"
+#~ "                                            "
 
-#: templates/activation/activation_link_body.html:95
-msgid ""
-"\n"
-"                                            Your account has been "
-"successfully created!\n"
-"                                            Activate it by clicking the link "
-"below:\n"
-"                                            "
-msgstr ""
-"\n"
-"                                            Votre compte a bien été créé!\n"
-"                                            Activez-le en cliquant sur le "
-"lien ci-dessous:\n"
-"                                            "
+#~ msgid "Activate my account"
+#~ msgstr "Activer mon compte"
 
-#: templates/activation/activation_link_body.html:127
-msgid "Activate my account"
-msgstr "Activer mon compte"
-
-#: templates/activation/activation_link_body.html:144
-#: templates/activation/activation_link_body.txt:11
-#: templates/products_expiration_notification/body.html:164
-#: templates/products_expiration_notification/body.txt:9
-#: templates/reset-password/reset_password_link_body.html:149
-#: templates/reset-password/reset_password_link_body.txt:10
 #, python-format
-msgid "%(project_name)s team"
-msgstr "L'équipe %(project_name)s"
+#~ msgid "%(project_name)s team"
+#~ msgstr "L'équipe %(project_name)s"
 
-#: templates/activation/activation_link_body.html:164
 #, python-format
-msgid ""
-"\n"
-"                                    The button doesn't work? Paste this link "
-"in your browser: <a href=\"%(activation_link)s\">%(activation_link)s</a>\n"
-"                                    "
-msgstr ""
-"\n"
-"                                    Le bouton ne fonctionne pas ? Colle ce "
-"lien dans votre navigateur: <a href=\"%(activation_link)s\">"
-"%(activation_link)s</a>\n"
-"                                    "
+#~ msgid ""
+#~ "\n"
+#~ "                                    The button doesn't work? Paste this "
+#~ "link in your browser: <a href=\"%(activation_link)s\">"
+#~ "%(activation_link)s</a>\n"
+#~ "                                    "
+#~ msgstr ""
+#~ "\n"
+#~ "                                    Le bouton ne fonctionne pas ? Colle "
+#~ "ce lien dans votre navigateur: <a href=\"%(activation_link)s\">"
+#~ "%(activation_link)s</a>\n"
+#~ "                                    "
 
-#: templates/activation/activation_link_body.txt:2
 #, python-format
-msgid "Welcome to %(project_name)s!"
-msgstr "Bienvenue sur %(project_name)s !"
+#~ msgid "Welcome to %(project_name)s!"
+#~ msgstr "Bienvenue sur %(project_name)s !"
 
-#: templates/activation/activation_link_body.txt:4
-msgid ""
-"\n"
-"Your account has been successfully created!\n"
-"Activate it by clicking the link below:\n"
-msgstr ""
-"\n"
-"Votre compte a bien été créé !\n"
-"Activez-le en cliquant sur le lien ci-dessous :\n"
+#~ msgid ""
+#~ "\n"
+#~ "Your account has been successfully created!\n"
+#~ "Activate it by clicking the link below:\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Votre compte a bien été créé !\n"
+#~ "Activez-le en cliquant sur le lien ci-dessous :\n"
 
-#: templates/activation/activation_link_subject.txt:2
-msgid "Account activation"
-msgstr "Activer mon compte"
+#~ msgid "Account activation"
+#~ msgstr "Activer mon compte"
 
-#: templates/products_expiration_notification/body.html:125
-#: templates/products_expiration_notification/body.txt:3
 #, python-format
-msgid "%(count)s products expires soon"
-msgstr "%(count)s products expires soon"
+#~ msgid "%(count)s products expires soon"
+#~ msgstr "%(count)s products expires soon"
 
-#: templates/products_expiration_notification/subject.txt:2
 #, fuzzy
-#| msgid "%(count)s products expires soon"
-msgid "Some products expires soon"
-msgstr "%(count)s products expires soon"
+#~| msgid "%(count)s products expires soon"
+#~ msgid "Some products expires soon"
+#~ msgstr "%(count)s products expires soon"
 
-#: templates/reset-password/reset_password_link_body.html:83
-#: templates/reset-password/reset_password_link_body.txt:2
-msgid "Hello"
-msgstr "Bonjour"
+#~ msgid "Hello"
+#~ msgstr "Bonjour"
 
-#: templates/reset-password/reset_password_link_body.html:95
-msgid ""
-"\n"
-"                                            You asked to reset your "
-"password.\n"
-"                                            Click on the link below to "
-"change it:\n"
-"                                            "
-msgstr ""
-"\n"
-"                                            Vous avez demandé à "
-"réinitialiser votre mot de passe.\n"
-"                                            Cliquez sur le lien ci-dessous "
-"pour le changer :\n"
-"                                            "
+#~ msgid ""
+#~ "\n"
+#~ "                                            You asked to reset your "
+#~ "password.\n"
+#~ "                                            Click on the link below to "
+#~ "change it:\n"
+#~ "                                            "
+#~ msgstr ""
+#~ "\n"
+#~ "                                            Vous avez demandé à "
+#~ "réinitialiser votre mot de passe.\n"
+#~ "                                            Cliquez sur le lien ci-"
+#~ "dessous pour le changer :\n"
+#~ "                                            "
 
-#: templates/reset-password/reset_password_link_body.html:127
-msgid ""
-"\n"
-"                                          Reset my password\n"
-"                                          "
-msgstr ""
-"\n"
-"                                          Réinitialiser mon mot de passe\n"
-"                                          "
+#~ msgid ""
+#~ "\n"
+#~ "                                          Reset my password\n"
+#~ "                                          "
+#~ msgstr ""
+#~ "\n"
+#~ "                                          Réinitialiser mon mot de passe\n"
+#~ "                                          "
 
-#: templates/reset-password/reset_password_link_body.html:146
-#: templates/reset-password/reset_password_link_body.txt:8
-msgid "If you didn't ignite this request, ignore this message."
-msgstr "Si vous n'êtes pas à l'origine de ce message, vous pouvez l'ignorer."
+#~ msgid "If you didn't ignite this request, ignore this message."
+#~ msgstr ""
+#~ "Si vous n'êtes pas à l'origine de ce message, vous pouvez l'ignorer."
 
-#: templates/reset-password/reset_password_link_body.html:169
 #, python-format
-msgid ""
-"\n"
-"                                    The button doesn't work? Paste this link "
-"in your browser: <a href=\"%(reset_password_link)s\">"
-"%(reset_password_link)s</a>\n"
-"                                    "
-msgstr ""
-"\n"
-"                                    Le bouton ne fonctionne pas ? Colle ce "
-"lien dans votre navigateur: <a href=« %(reset_password_link)s »>"
-"%(reset_password_link)s</a>\n"
-"                                    "
+#~ msgid ""
+#~ "\n"
+#~ "                                    The button doesn't work? Paste this "
+#~ "link in your browser: <a href=\"%(reset_password_link)s\">"
+#~ "%(reset_password_link)s</a>\n"
+#~ "                                    "
+#~ msgstr ""
+#~ "\n"
+#~ "                                    Le bouton ne fonctionne pas ? Colle "
+#~ "ce lien dans votre navigateur: <a href=« %(reset_password_link)s »>"
+#~ "%(reset_password_link)s</a>\n"
+#~ "                                    "
 
-#: templates/reset-password/reset_password_link_body.txt:4
-msgid "You asked to reset your password. Click on the link below to change it:"
-msgstr ""
-"Vous avez demandé à réinitialiser votre mot de passe. Cliquer sur le lien ci-"
-"dessous pour le changer :"
+#~ msgid ""
+#~ "You asked to reset your password. Click on the link below to change it:"
+#~ msgstr ""
+#~ "Vous avez demandé à réinitialiser votre mot de passe. Cliquer sur le lien "
+#~ "ci-dessous pour le changer :"
 
-#: templates/reset-password/reset_password_link_subject.txt:2
-msgid "Password reset"
-msgstr "Réinitialisation du mot de passe"
+#~ msgid "Password reset"
+#~ msgstr "Réinitialisation du mot de passe"
 
 #, fuzzy, python-format
 #~| msgid "%(project_name)s team"
@@ -258,65 +296,3 @@ msgstr "Réinitialisation du mot de passe"
 
 #~ msgid "{{ project_name }} team"
 #~ msgstr "L'équipe {{ project_name }}"
-
-#~ msgid "created"
-#~ msgstr "Créé le"
-
-#~ msgid "modified"
-#~ msgstr "Modifié le"
-
-#~ msgid "Your password has been set. You may go ahead and log in now."
-#~ msgstr ""
-#~ "Votre mot de passe a été enregistré. Vous pouvez vous connecter dès "
-#~ "maintenant."
-
-#~ msgid "Go to application"
-#~ msgstr "Retourner sur l'application"
-
-#~ msgid ""
-#~ "Please enter your new password twice so we can verify you typed it in "
-#~ "correctly."
-#~ msgstr ""
-#~ "Saisissez votre mot de passe 2 fois afin de vérifier qu'ils soient "
-#~ "identiques."
-
-#~ msgid "New password:"
-#~ msgstr "Nouveau mot de passe"
-
-#~ msgid "Confirm password:"
-#~ msgstr "Confirmation du mot de passe"
-
-#~ msgid "Change my password"
-#~ msgstr "Modifier mon mot de passe"
-
-#~ msgid ""
-#~ "The password reset link was invalid, possibly because it has already been "
-#~ "used. Please request a new password reset."
-#~ msgstr ""
-#~ "Le lien de réinitialisation du mot de passe est invalide car il a déjà "
-#~ "été utilisé. Merci de refaire une demande depuis l'application."
-
-#~ msgid ""
-#~ "We've emailed you instructions for setting your password, if an account "
-#~ "exists with the email you entered. You should receive them shortly."
-#~ msgstr ""
-#~ "Si un compte y est à attaché, vous recevrez sous peu les instructions "
-#~ "pour réinitialiser votre mot de passe à l'adresse email renseignée."
-
-#~ msgid ""
-#~ "If you don't receive an email, please make sure you've entered the "
-#~ "address you registered with, and check your spam folder."
-#~ msgstr ""
-#~ "Si vous ne recevez pas d'email, assurez vous d'avoir saisi l'adresse avec "
-#~ "laquelle vous vous êtes inscrit sur l'application. Vérifiez également "
-#~ "dans vos spams.'"
-
-#~ msgid ""
-#~ "Forgotten your password? Enter your email address below, and we'll email "
-#~ "instructions for setting a new one."
-#~ msgstr ""
-#~ "Vous avez oublié votre mot de passe ? Saisissez votre adresse email ci-"
-#~ "dessous et nous vous enverrons les instructions pour le modifier."
-
-#~ msgid "Reset my password"
-#~ msgstr "Réinitialiser mon mot de passe"
