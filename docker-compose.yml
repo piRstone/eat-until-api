@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+    db:
+        image: mdillon/postgis
+        environment:
+            POSTGRES_DB: eatuntil
+            POSTGRES_USER: eatuntil
+            POSTGRES_PASSWORD: eatuntil
+    django:
+        build: .
+        command: python manage.py runserver 0.0.0.0:8001
+        volumes:
+            - .:/srv/eatuntil
+        ports:
+            - 8001:8001
+        depends_on:
+            - db
