@@ -9,10 +9,10 @@ services:
             POSTGRES_PASSWORD: eatuntil
     django:
         build: .
-        command: python manage.py runserver 0.0.0.0:8001
+        command: python manage.py runserver 0.0.0.0:8000
         volumes:
             - .:/srv/eatuntil
         ports:
-            - 8001:8001
+            - 8000:8000
         depends_on:
             - db
