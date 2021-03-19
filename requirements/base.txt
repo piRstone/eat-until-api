@@ -1,5 +1,5 @@
 Django==2.2.4
-djangorestframework==3.10.2
+djangorestframework==3.11.2
 djangorestframework-jwt==1.8.0
 django-cors-headers==3.0.2
 sorl-thumbnail==12.4a1
